@@ -15,8 +15,7 @@ function App() {
         <NavBar></NavBar>
       </GridItem>
       <Show above="lg"> 
-        <GridItem area="aside" bg="violet">
-          sidebar
+        <GridItem area="aside">
         </GridItem>
       </Show>
       <GridItem area="main" >
