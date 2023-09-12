@@ -1,35 +1,31 @@
-import {
-  FaWindows,
-  FaPlaystation,
-  FaXbox,
-  FaApple,
-} from "react-icons/fa";
-import { SiNintendo } from "react-icons/si";
+import {FaWindows,FaXbox,FaApple,FaLinux} from "react-icons/fa";
 import { HStack, Icon } from "@chakra-ui/react";
 import { Platform } from "../services/useGames";
 import { IconType } from "react-icons";
+import { BsNintendoSwitch, BsAndroid2, BsGlobe } from 'react-icons/bs'
+import { RiPlaystationLine } from 'react-icons/ri'
 
-interface Props {
-  platforms: Platform[];
+interface Prop{
+  platforms: Platform[]
 }
 
-const PlatformIconList = ({ platforms }: Props) => {
-  const iconMap: {[key: string]: IconType} = {
-    // name: PlayStation 
-    // slug: playstation. In slug every word is small case. Better to rely on the slug because it is not supposed to change
+const PlatformIconList = ({ platforms }: Prop) => {
+  const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
-    playstation: FaPlaystation,
+    playstation: RiPlaystationLine,
     xbox: FaXbox,
-    nintendo: SiNintendo,
+    nintendo: BsNintendoSwitch,
     mac: FaApple,
-  };
+    linux: FaLinux,
+    ios: FaApple,
+    web: BsGlobe,
+    android: BsAndroid2,
+  }
   return (
-    <HStack marginY={1.5}>
-      {platforms.map((platform) => (
-        <Icon as={iconMap[platform.slug]} color={"gray.500"} />
-      ))}
+    <HStack>
+      {platforms.map((platform) => <Icon boxSize={4} key={platform.slug} as={iconMap[platform.slug]} color="gray.300"/>)}
     </HStack>
   );
-};
+}
 
 export default PlatformIconList;

@@ -1,14 +1,21 @@
-import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
+import { HStack, Switch, useColorMode, Icon } from "@chakra-ui/react";
+import { SunIcon } from "@chakra-ui/icons";
+import { PiMoonStarsDuotone } from "react-icons/pi";
 
-function ColorModeSwitch() {
+function ThemeToggleSwitch() {
   const { toggleColorMode, colorMode } = useColorMode(); // returns an object with properties, so we destructure it
 
   return (
     <HStack>
-      <Switch colorScheme="blue" isChecked={(colorMode === "dark")} onChange={toggleColorMode} />
-      <Text>Dark Mode</Text>
+      <SunIcon boxSize={5}></SunIcon>
+      <Switch
+        colorScheme="blue"
+        isChecked={colorMode === "dark"}
+        onChange={toggleColorMode}
+      />
+      <Icon as={PiMoonStarsDuotone} boxSize={6} />
     </HStack>
   );
 }
 
-export default ColorModeSwitch;
+export default ThemeToggleSwitch;
