@@ -1,12 +1,12 @@
-import {FaWindows,FaXbox,FaApple,FaLinux} from "react-icons/fa";
+import { FaWindows, FaXbox, FaApple, FaLinux } from "react-icons/fa";
 import { HStack, Icon } from "@chakra-ui/react";
-import { Platform } from "../services/useGames";
+import { Platform } from "../hooks/useGames";
 import { IconType } from "react-icons";
-import { BsNintendoSwitch, BsAndroid2, BsGlobe } from 'react-icons/bs'
-import { RiPlaystationLine } from 'react-icons/ri'
+import { BsNintendoSwitch, BsAndroid2, BsGlobe } from "react-icons/bs";
+import { RiPlaystationLine } from "react-icons/ri";
 
-interface Prop{
-  platforms: Platform[]
+interface Prop {
+  platforms: Platform[];
 }
 
 const PlatformIconList = ({ platforms }: Prop) => {
@@ -20,12 +20,19 @@ const PlatformIconList = ({ platforms }: Prop) => {
     ios: FaApple,
     web: BsGlobe,
     android: BsAndroid2,
-  }
+  };
   return (
     <HStack>
-      {platforms.map((platform) => <Icon boxSize={4} key={platform.slug} as={iconMap[platform.slug]} color="gray.300"/>)}
+      {platforms.map((platform) => (
+        <Icon
+          boxSize={4}
+          key={platform.slug}
+          as={iconMap[platform.slug]}
+          color="gray.300"
+        />
+      ))}
     </HStack>
   );
-}
+};
 
 export default PlatformIconList;

@@ -1,0 +1,33 @@
+/* Page block */
+
+
+/* sidebar block */
+.sidebar__list-item{
+    padding: 0 0 20px 40px;
+    transition: color 0.15s;
+    text-align: left;
+}
+.sidebar__list-item:hover{
+    color: grey;
+}
+
+/* GameCard */
+.gamecard__title{
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom:2px;
+}
+
+.gamecard__title:hover{
+    color: grey;
+    cursor: pointer;
+    transition: color .2s;
+}
+.gamecard__body{
+
+}
+
+.platformicons-list{
+    justify-content: space-between;
+    margin-top: 0;
+}
