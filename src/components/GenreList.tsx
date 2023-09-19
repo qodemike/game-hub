@@ -14,7 +14,7 @@ const GenreList = ({onSelectGenre , selectedGenre }: Props) => {
 
   return (
     <>
-      <List marginTop="40px">
+      <List marginTop="80px">
         {isLoading &&
           skeletons.map((skeleton) => (
             <GenreListSkeleton key={skeleton}></GenreListSkeleton>
