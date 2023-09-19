@@ -15,7 +15,6 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-// requestConfig?: means it is optional, so we don't have to always pass it.
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
