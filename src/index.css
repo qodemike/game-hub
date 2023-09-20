@@ -12,19 +12,11 @@
 }
 
 /* GameCard */
-.gamecard__title{
-    text-align: left;
-    margin-top: 15px;
-    margin-bottom:2px;
-}
 
 .gamecard__title:hover{
     color: grey;
     cursor: pointer;
     transition: color .2s;
-}
-.gamecard__body{
-
 }
 
 .platformicons-list{

@@ -4,15 +4,15 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { useGames } from "../hooks/useGames";
 import { Platform } from "../hooks/usePlatforms";
+import { GameQueries } from "../App";
 
 interface Props {
-    selectedGenre: Genre | null;
-    selectedPlatform: Platform | null;
+    gameQueries: GameQueries;
 }
 
-function GameGrid({ selectedGenre,selectedPlatform }: Props) {
-    // Pass selectedGenre as a parameter to useGames to pass to the backend
-    const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+
+function GameGrid({ gameQueries }: Props) {
+    const { data, error, isLoading } = useGames(gameQueries);
     const skeletons = [1, 2, 3, 4, 5, 6];
     
     return (
