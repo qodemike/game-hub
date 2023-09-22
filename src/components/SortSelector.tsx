@@ -7,6 +7,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+import styles from "./SortSelector.module.css";
 
 interface Props {
     sortOrder: string;
@@ -27,8 +28,8 @@ function SortSelector({ onSelectSortOrder , sortOrder }: Props) {
 
     return (
         <Menu >
-            <MenuButton w="300px" as={Button} rightIcon={<BsChevronDown />}>
-                <Text display={"inline"} fontWeight={"400"}>Order by:</Text> {order?.label || "Relevance"}
+            <MenuButton w="275px" as={Button} rightIcon={<BsChevronDown />}>
+                <Text  className={styles.buttonText}  fontWeight={"400"}> Order by:</Text><strong className={styles.buttonStrong}> {order?.label || "Relevance"}</strong>
             </MenuButton>
             <MenuList>
                 {sortOrders.map((order) => (

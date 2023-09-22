@@ -3,6 +3,7 @@ import { GameObj } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-cropping";
+import styles from "./GameCard.module.css"
 
 interface Props {
     game: GameObj;
@@ -10,18 +11,19 @@ interface Props {
 
 function GameCard({ game }: Props) {
     return (
-        <Card maxW="400px" borderRadius={10} overflow="hidden">
+        <Card className={styles.card} >
             <Image src={getCroppedImageUrl(game.background_image)}></Image>
-            <CardBody paddingBottom={"30px"} paddingTop={"15px"}>
+            <CardBody className={styles.cardBody} >
                 <VStack gap={"15px"} justifyContent={"space-between"} alignItems={"left"} >
-                    <HStack  className="platformicons-list">
+                    <HStack  className={styles.gamecardIconsSection}>
                         <PlatformIconList
                             platforms={game.parent_platforms.map((p) => p.platform)}
                         ></PlatformIconList>
                         <CriticScore score={game.metacritic}></CriticScore>
                     </HStack>
                     <Heading
-                        fontSize={"22px"}
+                    className={styles.gamecardTitle}
+                    fontSize={"24px"}
                     >
                         {game.name}
                     </Heading>

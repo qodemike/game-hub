@@ -2,6 +2,7 @@ import { HStack, Image, List, Text } from "@chakra-ui/react";
 import { Genre, useGenres } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-cropping";
 import GenreListSkeleton from "./GenreListSkeleton";
+import styles from "./GenreList.module.css";
 
 interface Props{
   onSelectGenre: (genre: Genre) => void;
@@ -14,7 +15,7 @@ const GenreList = ({onSelectGenre , selectedGenre }: Props) => {
 
   return (
     <>
-      <List marginTop="80px">
+      <List className={styles.genreList} >
         {isLoading &&
           skeletons.map((skeleton) => (
             <GenreListSkeleton key={skeleton}></GenreListSkeleton>
@@ -22,16 +23,16 @@ const GenreList = ({onSelectGenre , selectedGenre }: Props) => {
         {data.map((genre) => (
           <button
             onClick={() => {onSelectGenre(genre)}}
-            className="sidebar__list-item "
+            className={styles.genreListButton}
             key={genre.id}
           >
-            <HStack gap={4}>
+            <HStack className={styles.genreListItem} gap={4}>
               <Image
-                borderRadius="5px"
+              className={styles.image}
                 boxSize={"50px"}
                 src={getCroppedImageUrl(genre.image_background)}
               ></Image>
-              <Text fontWeight={genre.id === selectedGenre?.id ? "900": "normal" } fontSize={"13px"} fontFamily={"Inter"}>
+              <Text className={styles.genreLabel} fontWeight={genre.id === selectedGenre?.id ? "900": "normal"} >
                 {genre.name}
               </Text>
             </HStack>
