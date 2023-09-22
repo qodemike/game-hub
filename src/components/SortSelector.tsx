@@ -26,8 +26,8 @@ function SortSelector({ onSelectSortOrder , sortOrder }: Props) {
     const order =  sortOrders.find((order) => order.value === sortOrder )
 
     return (
-        <Menu>
-            <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+        <Menu >
+            <MenuButton w="300px" as={Button} rightIcon={<BsChevronDown />}>
                 <Text display={"inline"} fontWeight={"400"}>Order by:</Text> {order?.label || "Relevance"}
             </MenuButton>
             <MenuList>

@@ -19,8 +19,9 @@ export const useGames = (
             params: {
                 genres: gameQueries.genre?.id,
                 platforms: gameQueries.platform?.id,
-                ordering: gameQueries.sortOrder
+                ordering: gameQueries.sortOrder,
+                search: gameQueries.searchText
             },
         },
-        [gameQueries.genre?.id, gameQueries.platform?.id,gameQueries.sortOrder ]
+        [gameQueries.genre?.id, gameQueries.platform?.id,gameQueries.sortOrder, gameQueries.searchText ]
     );
