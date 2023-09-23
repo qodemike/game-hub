@@ -1,12 +1,12 @@
 import { Card, CardBody, HStack, Heading, Image, VStack } from "@chakra-ui/react";
-import { GameObj } from "../hooks/useGames";
+import { Games } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-cropping";
 import styles from "./GameCard.module.css"
 
 interface Props {
-    game: GameObj;
+    game: Games;
 }
 
 function GameCard({ game }: Props) {

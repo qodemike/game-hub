@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
-import { GameObj } from "./useGames";
+import { Games } from "./useGames";
 
 export interface Genre {
   id: number;
   name: string;
   image_background: string;
-  games: GameObj[];
+  games: Games[];
 }
 
 interface FetchResponse<T> {

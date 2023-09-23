@@ -2,7 +2,7 @@ import { GameQueries } from "../App";
 import useData from "./useData";
 import { Platform } from "./usePlatforms";
 
-export interface GameObj {
+export interface Games {
     id: number;
     name: string;
     background_image: string;
@@ -13,7 +13,7 @@ export interface GameObj {
 export const useGames = (
     gameQueries: GameQueries    
 ) =>
-    useData<GameObj>(
+    useData<Games>(
         "/games",
         {
             params: {
