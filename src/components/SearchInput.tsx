@@ -1,6 +1,6 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import styles from "./searchInput.module.css";
+import styles from "./SearchInput.module.css";
 import { FormEvent, useRef } from "react";
 
 interface Props{
@@ -12,12 +12,14 @@ function SearchInput({onSearch}: Props ) {
 
     const handler = (e: FormEvent) => {
         e.preventDefault();
+
         if (ref.current) onSearch(ref.current.value)
     }
     return (
-        <form onSubmit={handler}>
-        <InputGroup>
+        <form className={styles.form} onSubmit={handler}>
+        <InputGroup className={styles.inputGroup}>
             <Input
+                className={styles.searchInput}
                 ref={ref}
                 padding={"20px"}
                 fontSize={"14px"}

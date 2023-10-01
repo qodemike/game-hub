@@ -1,5 +1,5 @@
 import { HStack, Image, List, Text } from "@chakra-ui/react";
-import { Genre, useGenres } from "../hooks/useGenres";
+import  {useGenres, Genre} from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-cropping";
 import GenreListSkeleton from "./GenreListSkeleton";
 import styles from "./GenreList.module.css";
@@ -10,7 +10,7 @@ interface Props{
 }
 
 const GenreList = ({onSelectGenre , selectedGenre }: Props) => {
-  const { data, isLoading } = useGenres();
+  const { data,  isLoading } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
@@ -20,9 +20,10 @@ const GenreList = ({onSelectGenre , selectedGenre }: Props) => {
           skeletons.map((skeleton) => (
             <GenreListSkeleton key={skeleton}></GenreListSkeleton>
           ))}
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <button
-            onClick={() => {onSelectGenre(genre)}}
+            onClick={() => {
+              onSelectGenre(genre)}}
             className={styles.genreListButton}
             key={genre.id}
           >
@@ -32,7 +33,7 @@ const GenreList = ({onSelectGenre , selectedGenre }: Props) => {
                 boxSize={"50px"}
                 src={getCroppedImageUrl(genre.image_background)}
               ></Image>
-              <Text className={styles.genreLabel} fontWeight={genre.id === selectedGenre?.id ? "900": "normal"} >
+              <Text className={styles.genreLabel} fontWeight={genre.id === selectedGenre?.id ? "700": "normal"} >
                 {genre.name}
               </Text>
             </HStack>

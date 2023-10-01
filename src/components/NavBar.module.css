@@ -1,0 +1,12 @@
+.logo{
+    width: 200px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 768px) {
+    .logo{
+        width: 210px;
+    }
+}

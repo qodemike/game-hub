@@ -13,7 +13,7 @@ function GameCard({ game }: Props) {
     return (
         <Card className={styles.card} >
             <Image src={getCroppedImageUrl(game.background_image)}></Image>
-            <CardBody className={styles.cardBody} >
+            <CardBody className={styles.cardBody} paddingTop={3}>
                 <VStack gap={"15px"} justifyContent={"space-between"} alignItems={"left"} >
                     <HStack  className={styles.gamecardIconsSection}>
                         <PlatformIconList

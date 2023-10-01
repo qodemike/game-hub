@@ -14,11 +14,11 @@ function GameGrid({ gameQueries }: Props) {
     
     return (
         <>
-            {error && <Text color={"pink"} paddingTop={"10px"}  paddingLeft={"40px"}> {error}</Text>}
+            {error && <Text color={"pink"} marginTop={"20px"}  marginLeft={"40px"}> {error}</Text>}
             <SimpleGrid
                 columns={{ sm: 1, md: 2, lg: 3, xl: 3 }}
-                padding={10}
-                spacing={6}
+                marginTop="30px"
+                spacing={4}
                 >
                 {isLoading &&
                     skeletons.map((skeleton) => (

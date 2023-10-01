@@ -1,5 +1,8 @@
+.button{
+    transform: scale(.9);
+}
 .buttonText{
-    padding-right: 5px;
+    font-weight: 400;
     display: inline;
     font-size: 14px;
 }

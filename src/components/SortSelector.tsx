@@ -28,8 +28,8 @@ function SortSelector({ onSelectSortOrder , sortOrder }: Props) {
 
     return (
         <Menu >
-            <MenuButton w="275px" as={Button} rightIcon={<BsChevronDown />}>
-                <Text  className={styles.buttonText}  fontWeight={"400"}> Order by:</Text><strong className={styles.buttonStrong}> {order?.label || "Relevance"}</strong>
+            <MenuButton className={styles.button} as={Button} rightIcon={<BsChevronDown />}>
+                <span className={styles.buttonText}> Order by:</span> <strong className={styles.buttonStrong}> {order?.label || "Relevance"}</strong>
             </MenuButton>
             <MenuList>
                 {sortOrders.map((order) => (

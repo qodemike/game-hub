@@ -1,11 +1,16 @@
 import { HStack, Image } from "@chakra-ui/react"
-import logo from '../assets/RenderWebsody.png'
+import logo from '../assets/Bronsen Dark.png'
 import ColorModeSwitch from "./ColorModeSwitch"
+import styles from './NavBar.module.css'
+import SearchInput from "./SearchInput"
+import { GameQueries } from "../App"
 
-function NavBar() {
+
+function NavBar(searchText: GameQueries) {
   return (
-    <HStack justifyContent={"space-between"} padding="10px">
-        <Image src={logo} boxSize='50px'/>
+    <HStack className={styles.navBar} justifyContent={"space-between"}  padding="16px">
+        <Image src={logo} className={styles.logo}/>
+          <SearchInput />
         <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   )
