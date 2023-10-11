@@ -30,19 +30,22 @@ function App() {
         base: "1fr",
         lg: "230px 1fr",
       }}
+      templateRows={{
+        lg: "64px 1fr"
+      }}
     >
       <GridItem area="nav">
-        <NavBar ></NavBar>
+        <NavBar onSearch={(searchText) => setGameQueries({ ...gameQueries, searchText })}></NavBar>
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside">
+        <GridItem area="aside" paddingTop={"40px"} >
           <GenreList selectedGenre={gameQueries.genre}  onSelectGenre={(genre) => setGameQueries({ ...gameQueries, genre})}></GenreList>
         </GridItem>
       </Show>
       <GridItem area="main">
         <Box marginX={7}>
         <GamesHeading gameQueries={gameQueries} ></GamesHeading>
-        <HStack>
+        <HStack position={"relative"} left={"-5px"}>
           <PlatformSelector selectedPlatform={gameQueries.platform} onSelectedPlatform={(platform) => setGameQueries({...gameQueries, platform}) } />
           <SortSelector sortOrder={gameQueries.sortOrder} onSelectSortOrder={ (sortOrder) => setGameQueries( {...gameQueries, sortOrder} ) } />
         </HStack>

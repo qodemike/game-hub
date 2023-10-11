@@ -14,7 +14,7 @@ function PlatformSelector({ onSelectedPlatform, selectedPlatform}: Props ) {
 
     return (
         <Menu>
-            <MenuButton className={styles.button} as={Button}  rightIcon={ <BsChevronDown/> }>
+            <MenuButton className={styles.button} as={Button} rightIcon={ <BsChevronDown/> }>
                 {selectedPlatform?.name || <span>Platforms</span>} 
             </MenuButton>
             <MenuList>

@@ -1,5 +1,19 @@
+.heading{
+    cursor: pointer;
+}
 .genreList{
-    /* margin-top: 80px; */
+    padding-bottom: 9px;
+    border-bottom: 1px solid #252f42;
+}
+.collapsible{
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
+.collapsed{
+    max-height: 100%;
+    
+    transition: max-height 0.3s ease-in-out;
 }
 .genreListButton{
     width: 100%;

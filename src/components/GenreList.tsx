@@ -1,8 +1,9 @@
-import { HStack, Image, List, Text } from "@chakra-ui/react";
+import { Box, HStack, Heading, Image, List, Text } from "@chakra-ui/react";
 import  {useGenres, Genre} from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-cropping";
 import GenreListSkeleton from "./GenreListSkeleton";
 import styles from "./GenreList.module.css";
+import { useRef, useState } from "react";
 
 interface Props{
   onSelectGenre: (genre: Genre) => void;
@@ -10,12 +11,24 @@ interface Props{
 }
 
 const GenreList = ({onSelectGenre , selectedGenre }: Props) => {
-  const { data,  isLoading } = useGenres();
+  const { data, isLoading } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  const [collapse, setCollapse] = useState(true);
+  const listRef = useRef<HTMLUListElement>(null);
+
+  const toggleCollapse = () => {
+    if (listRef.current) {
+      const list = listRef.current;
+      list.style.maxHeight = collapse ? '0' : list.scrollHeight + 'px';
+    }
+    setCollapse(!collapse);
+  };
 
   return (
     <>
-      <List className={styles.genreList} >
+    <Heading onClick={toggleCollapse} fontSize={"2xl"} marginLeft={"20px"} className={styles.heading} >Genres</Heading>
+    <Box className={styles.genreList}>
+      <List ref={listRef} className={`${styles.collapsible} ${collapse ? styles.collapsed : '' }`}>
         {isLoading &&
           skeletons.map((skeleton) => (
             <GenreListSkeleton key={skeleton}></GenreListSkeleton>
@@ -40,6 +53,7 @@ const GenreList = ({onSelectGenre , selectedGenre }: Props) => {
           </button>
         ))}
       </List>
+      </Box>
     </>
   );
 };

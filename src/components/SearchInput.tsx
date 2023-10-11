@@ -12,8 +12,12 @@ function SearchInput({onSearch}: Props ) {
 
     const handler = (e: FormEvent) => {
         e.preventDefault();
+        if (ref.current) { 
+            onSearch(ref.current.value);
+            console.log(ref.current.value)
+            window.scrollTo(0,0);
+        };
 
-        if (ref.current) onSearch(ref.current.value)
     }
     return (
         <form className={styles.form} onSubmit={handler}>
