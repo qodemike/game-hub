@@ -6,7 +6,7 @@ function ThemeToggleSwitch() {
   const { toggleColorMode, colorMode } = useColorMode(); // returns an object with properties, so we destructure it
 
   return (
-    <HStack>
+    <HStack color="rgb(236 236 237)">
       <SunIcon boxSize={4}></SunIcon>
       <Switch
         colorScheme="blue"

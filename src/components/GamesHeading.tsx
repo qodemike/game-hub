@@ -1,15 +1,11 @@
 import { Heading } from '@chakra-ui/react'
-import styles from './GamesHeading.module.css'
-import React from 'react'
-import { GameQueries } from '../App'
+import useGameQueryStore from '../store';
 
-interface Props{
-    gameQueries: GameQueries;
-}
 
-const GamesHeading = ({ gameQueries }: Props) => {
+const GamesHeading = () => {
+  const { gameQuery} = useGameQueryStore()
   return (
-    <Heading className={styles.heading} fontSize={"5xl"}>{`${gameQueries.platform?.name || ''} ${gameQueries.genre?.name || ''} Games`}</Heading>
+    <Heading fontSize={"5xl"}> {`${gameQuery.platform?.name || ''} ${gameQuery.genre?.name || ''} ${ gameQuery.searchText? `${gameQuery.searchText} search results` :"Games"}`}</Heading>
   )
 }
 

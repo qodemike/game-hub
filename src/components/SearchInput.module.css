@@ -1,8 +1,7 @@
 .form{
     transform: scale(.9);
-    width: 50%;
+    width: 100%;
 }
-
 .searchIcon{
     cursor:pointer;
 }

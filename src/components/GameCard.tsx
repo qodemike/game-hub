@@ -27,9 +27,11 @@ function GameCard({ game }: Props) {
           alignItems={"left"}
         >
           <HStack className={styles.gamecardIconsSection}>
-            <PlatformIconList
-              platforms={game.parent_platforms.map((p) => p.platform)}
-            ></PlatformIconList>
+          {game.parent_platforms ? (
+              <PlatformIconList
+                platforms={game.parent_platforms.map((p) => p.platform)}
+              ></PlatformIconList>
+            ) : null}
             <CriticScore score={game.metacritic}></CriticScore>
           </HStack>
           <Heading className={styles.gamecardTitle} fontSize={"24px"}>

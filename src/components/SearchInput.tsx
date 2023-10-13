@@ -1,43 +1,61 @@
-import { SearchIcon } from "@chakra-ui/icons";
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
+import {
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+} from "@chakra-ui/react";
 import styles from "./SearchInput.module.css";
 import { FormEvent, useRef } from "react";
+import useGameQueryStore from "../store";
 
-interface Props{
-    onSearch: (searchText: string) => void;
-}
 
-function SearchInput({onSearch}: Props ) {
-    const ref = useRef<HTMLInputElement>(null);
+function SearchInput() {
+  const setSearchText = useGameQueryStore(s => s.setSearchText);
+  const ref = useRef<HTMLInputElement>(null);
 
-    const handler = (e: FormEvent) => {
-        e.preventDefault();
-        if (ref.current) { 
-            onSearch(ref.current.value);
-            console.log(ref.current.value)
-            window.scrollTo(0,0);
-        };
-
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    if (ref.current?.value) {
+      window.scrollTo(0, 0);
+      setSearchText(ref.current.value);
     }
-    return (
-        <form className={styles.form} onSubmit={handler}>
-        <InputGroup className={styles.inputGroup}>
-            <Input
-                className={styles.searchInput}
-                ref={ref}
-                padding={"20px"}
-                fontSize={"14px"}
-                fontFamily={"Inter"}
-                borderRadius={"30px"}
-                placeholder="Search"
-                variant={"filled"}
-            />
-            <InputRightElement paddingRight={"30px"} onClick={handler} >
-                <SearchIcon className={styles.searchIcon} />
-            </InputRightElement>
-        </InputGroup>
-        </form>
-    );
+  };
+  const handleClearSearch= () => {
+    if (ref.current?.value) {
+      ref.current.value = "";
+    }
+  };
+
+  return (
+    <form className={styles.form} onSubmit={handleSearch}>
+      <InputGroup className={styles.inputGroup}>
+        <InputLeftElement paddingLeft={"20px"} >
+        <SearchIcon onClick={handleSearch} className={styles.searchIcon} />
+        </InputLeftElement>
+        <Input
+          className={styles.searchInput}
+          ref={ref}
+          padding={"20px"}
+          paddingLeft={"60px"}
+          fontSize={"14px"}
+          fontFamily={"Inter"}
+          borderRadius={"30px"}
+          placeholder="Search"
+          variant={"filled"}
+        />
+        <InputRightElement paddingRight={"20px"} >
+          <IconButton
+            aria-label="Clear Search Text"
+            icon={<CloseIcon />}
+            variant="unstyled"
+            onClick={handleClearSearch}
+          />
+        </InputRightElement>
+      </InputGroup>
+    </form>
+  );
 }
 
 export default SearchInput;

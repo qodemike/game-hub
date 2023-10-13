@@ -2,7 +2,7 @@
     cursor: pointer;
 }
 .genreList{
-    padding-bottom: 9px;
+    margin-left: 12px;
     border-bottom: 1px solid #252f42;
 }
 .collapsible{
@@ -22,7 +22,7 @@
 .genreListButton:hover{
     background-color: rgba(255, 255, 255, 0.048);
 }
-.genreListButton:focus{
+.selectedGenre{
     background-color: rgba(255, 255, 255, 0.048);
 }
 .image{

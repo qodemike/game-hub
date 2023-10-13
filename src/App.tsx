@@ -1,25 +1,15 @@
-import { Box,  Grid, GridItem, HStack, Show } from "@chakra-ui/react";
-import NavBar from "./components/NavBar";
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import ClearFilterButton from "./components/ClearFilterButton";
 import GameGrid from "./components/GameGrid";
-import GenreList from "./components/GenreList";
-import { useState } from "react";
-import { Genre } from "./hooks/useGenres";
-import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./hooks/usePlatforms";
-import SortSelector from "./components/SortSelector";
-import SearchInput from "./components/SearchInput";
 import GamesHeading from "./components/GamesHeading";
-
-export interface GameQueries{
-  genre: Genre | null;
-  platform: Platform | null;
-  sortOrder: string;
-  searchText: string;
-}
+import GenreList from "./components/GenreList";
+import NavBar from "./components/NavBar";
+import PlatformSelector from "./components/PlatformSelector";
+import SortSelector from "./components/SortSelector";
 
 function App() {
-  const [gameQueries, setGameQueries] = useState<GameQueries>( {} as GameQueries );
-  
+  // const [gameQueries, setGameQueries] = useState<GameQueries>( {} as GameQueries );
+
   return (
     <Grid
       templateAreas={{
@@ -31,25 +21,39 @@ function App() {
         lg: "230px 1fr",
       }}
       templateRows={{
-        lg: "64px 1fr"
+        lg: "64px 1fr",
       }}
     >
       <GridItem area="nav">
-        <NavBar onSearch={(searchText) => setGameQueries({ ...gameQueries, searchText })}></NavBar>
+        <NavBar></NavBar>
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside" paddingTop={"40px"} >
-          <GenreList selectedGenre={gameQueries.genre}  onSelectGenre={(genre) => setGameQueries({ ...gameQueries, genre})}></GenreList>
+        <GridItem area="aside" paddingTop={"20px"}>
+          <GenreList></GenreList>
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box marginX={7}>
-        <GamesHeading gameQueries={gameQueries} ></GamesHeading>
-        <HStack position={"relative"} left={"-5px"}>
-          <PlatformSelector selectedPlatform={gameQueries.platform} onSelectedPlatform={(platform) => setGameQueries({...gameQueries, platform}) } />
-          <SortSelector sortOrder={gameQueries.sortOrder} onSelectSortOrder={ (sortOrder) => setGameQueries( {...gameQueries, sortOrder} ) } />
-        </HStack>
-        <GameGrid gameQueries={gameQueries} />
+        <Box marginTop={"40px"} marginX={7}>
+          <GamesHeading></GamesHeading>
+          <HStack
+            marginTop={"20px"}
+            position={"relative"}
+            left={"-6px"}
+            zIndex="1"
+          >
+            <Box transform={"scale(.9)"}>
+              <ClearFilterButton />
+            </Box>
+            <Box transform={"scale(.9)"}>
+              <PlatformSelector />
+            </Box>
+            <Box transform={"scale(.9)"}>
+              <SortSelector />
+            </Box>
+          </HStack>
+          <Box marginTop={"15px"}>
+            <GameGrid />
+          </Box>
         </Box>
       </GridItem>
     </Grid>

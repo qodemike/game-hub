@@ -463,23 +463,6 @@ export default [
       ]
     },
     {
-      "id": 10,
-      "name": "Commodore / Amiga",
-      "slug": "commodore-amiga",
-      "platforms": [
-        {
-          "id": 166,
-          "name": "Commodore / Amiga",
-          "slug": "commodore-amiga",
-          "games_count": 2077,
-          "image_background": "https://media.rawg.io/media/screenshots/5d8/5d89e3ef78840103848e59d631cfc431.jpg",
-          "image": null,
-          "year_start": null,
-          "year_end": null
-        }
-      ]
-    },
-    {
       "id": 11,
       "name": "SEGA",
       "slug": "sega",
@@ -556,40 +539,7 @@ export default [
         }
       ]
     },
-    {
-      "id": 12,
-      "name": "3DO",
-      "slug": "3do",
-      "platforms": [
-        {
-          "id": 111,
-          "name": "3DO",
-          "slug": "3do",
-          "games_count": 97,
-          "image_background": "https://media.rawg.io/media/screenshots/d8c/d8c399c09701ae2603043a3bb3a0bff5.jpg",
-          "image": null,
-          "year_start": null,
-          "year_end": null
-        }
-      ]
-    },
-    {
-      "id": 13,
-      "name": "Neo Geo",
-      "slug": "neo-geo",
-      "platforms": [
-        {
-          "id": 12,
-          "name": "Neo Geo",
-          "slug": "neogeo",
-          "games_count": 120,
-          "image_background": "https://media.rawg.io/media/screenshots/b10/b10ec870bdea34d4947e1ac3b0f1461a.jpg",
-          "image": null,
-          "year_start": null,
-          "year_end": null
-        }
-      ]
-    },
+
     {
       "id": 14,
       "name": "Web",
