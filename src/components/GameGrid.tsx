@@ -12,7 +12,7 @@ function GameGrid() {
 
     return (
         <>
-            {error && <Text color={"pink"} marginTop={"20px"} marginLeft={"40px"}>{error.message}</Text>}
+            {error && <Text color={"pink"} marginY={"20px"} >{error.message}</Text>}
             <InfiniteScroll
                 dataLength={fetchedGamesCount} // The total number of items fetch so far.
                 hasMore={!!hasNextPage}
