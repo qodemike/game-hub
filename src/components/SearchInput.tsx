@@ -14,11 +14,12 @@ import useGameQueryStore from "../store";
 function SearchInput() {
   const setSearchText = useGameQueryStore(s => s.setSearchText);
   const ref = useRef<HTMLInputElement>(null);
+  const {scrollToTop} = useGameQueryStore();
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
     if (ref.current?.value) {
-      window.scrollTo(0, 0);
+      scrollToTop();
       setSearchText(ref.current.value);
     }
   };
@@ -45,7 +46,7 @@ function SearchInput() {
           placeholder="Search"
           variant={"filled"}
         />
-        <InputRightElement paddingRight={"20px"} >
+        <InputRightElement paddingRight={"30px"} >
           <IconButton
             aria-label="Clear Search Text"
             icon={<CloseIcon />}

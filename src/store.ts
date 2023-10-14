@@ -16,6 +16,7 @@ interface GameQueryStore{
     setSortOrder: (sortOrder: string) => void;
     setSearchText: (searchText: string) => void;
     clearGameQuery: () => void;
+    scrollToTop: () => void;
 }
 
 const useGameQueryStore = create<GameQueryStore>((set) => {
@@ -25,8 +26,8 @@ const useGameQueryStore = create<GameQueryStore>((set) => {
         setPlatform: (platform) => set((store) => ( {gameQuery: { ...store.gameQuery, platform}} )),
         setSortOrder: (sortOrder) => set((store) => ( {gameQuery: { ...store.gameQuery, sortOrder}})),
         setSearchText: (searchText) => set( () => ({gameQuery: { searchText }})),
-        clearGameQuery: () => set({ gameQuery: {}})
-
+        clearGameQuery: () => set({ gameQuery: {}}),
+        scrollToTop: () => (window.scrollTo(0,0))
     }
 })
 

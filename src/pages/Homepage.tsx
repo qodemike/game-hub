@@ -1,19 +1,18 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
-import ClearFilterButton from "./components/ClearFilterButton";
-import GameGrid from "./components/GameGrid";
-import GamesHeading from "./components/GamesHeading";
-import GenreList from "./components/GenreList";
-import NavBar from "./components/NavBar";
-import PlatformSelector from "./components/PlatformSelector";
-import SortSelector from "./components/SortSelector";
+import GenreList from "../components/GenreList";
+import GamesHeading from "../components/GamesHeading";
+import ClearFilterButton from "../components/ClearFilterButton";
+import SortSelector from "../components/SortSelector";
+import PlatformSelector from "../components/PlatformSelector";
+import GameGrid from "../components/GameGrid";
 
-function App() {
 
+const Homepage = () => {
   return (
     <Grid
       templateAreas={{
-        base: `"nav " " main"`,
-        lg: `"nav nav" "aside main"`,
+        base: `" main"`,
+        lg: `"aside main"`,
       }}
       templateColumns={{
         base: "1fr",
@@ -23,14 +22,12 @@ function App() {
         lg: "64px 1fr",
       }}
     >
-      <GridItem area="nav">
-        <NavBar></NavBar>
-      </GridItem>
       <Show above="lg">
-        <GridItem area="aside" paddingTop={"20px"}>
+        <GridItem area="aside">
           <GenreList></GenreList>
         </GridItem>
       </Show>
+      
       <GridItem area="main">
         <Box marginTop={"40px"} marginX={7}>
           <GamesHeading></GamesHeading>
@@ -56,7 +53,7 @@ function App() {
         </Box>
       </GridItem>
     </Grid>
-  );
+  )
 }
 
-export default App;
+export default Homepage

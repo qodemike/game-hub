@@ -8,6 +8,7 @@ import useGameQueryStore from "../store";
 
 const GenreList = () => {
 
+  const {scrollToTop} = useGameQueryStore();
   const setGenre = useGameQueryStore(s => s.setGenre);
   const  gameQuery = useGameQueryStore(s => s.gameQuery);
   const { data, isLoading } = useGenres();
@@ -48,6 +49,7 @@ const GenreList = () => {
           {data?.results.map((genre) => (
             <button
               onClick={() => {
+                scrollToTop();
                 setGenre(genre);
               }}
               className={`${styles.genreListButton} ${

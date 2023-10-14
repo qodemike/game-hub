@@ -29,7 +29,7 @@ function GameGrid() {
                 ))}
                 {data?.pages.map((page, index) =>
                     <React.Fragment key={index}>
-                        {page.results.map((game) => ( // Since the shape of data has changed
+                        {page.results.map((game) => ( 
                             <GameCard key={game.id} game={game}></GameCard>
                         ))}
                     </React.Fragment>
