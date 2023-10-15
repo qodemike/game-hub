@@ -6,7 +6,7 @@ import {
   Image,
   VStack,
 } from "@chakra-ui/react";
-import { Games } from "../hooks/useGames";
+import Games  from "../entities/Games";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-cropping";
@@ -28,17 +28,17 @@ function GameCard({ game }: Props) {
           alignItems={"left"}
         >
           <HStack className={styles.gamecardIconsSection}>
-          {game.parent_platforms ? (
+            {game.parent_platforms ? (
               <PlatformIconList
                 platforms={game.parent_platforms.map((p) => p.platform)}
               ></PlatformIconList>
             ) : null}
             <CriticScore score={game.metacritic}></CriticScore>
           </HStack>
-          <Link to={`games/${game.slug}`} >
-          <Heading className={styles.gamecardTitle} fontSize={"24px"}>
-            {game.name}
-          </Heading>
+          <Link to={`games/${game.slug}`}>
+            <Heading className={styles.gamecardTitle} fontSize={"24px"}>
+              {game.name}
+            </Heading>
           </Link>
         </VStack>
       </CardBody>
