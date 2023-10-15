@@ -34,6 +34,7 @@ const GenreList = () => {
         fontSize={"2xl"}
         marginLeft={"20px"}
         className={styles.heading}
+        fontFamily={"Inter"}
       >
         Genres
       </Heading>
@@ -65,7 +66,7 @@ const GenreList = () => {
                   boxSize={"50px"}
                   src={getCroppedImageUrl(genre.image_background)}
                 ></Image>
-                <Text className={styles.genreLabel}>{genre.name}</Text>
+                <Text fontFamily={"Inter"} className={styles.genreLabel}>{genre.name}</Text>
               </HStack>
             </button>
           ))}

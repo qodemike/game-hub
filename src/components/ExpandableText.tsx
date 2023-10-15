@@ -7,7 +7,7 @@ interface Props {
 
 const ExpandableText = ({ children }: Props) => {
   const [expanded, setExpanded] = useState(false);
-  const limit = 300;
+  const limit = 500;
 
   if (children.length <= limit) return <Text>{children}</Text>;
 
@@ -15,7 +15,7 @@ const ExpandableText = ({ children }: Props) => {
 
   return (
     <>
-      <Text  fontFamily={"Inter"} fontWeight={"300"}>
+      <Text lineHeight={"1.8"} fontFamily={"Inter"} fontWeight={"300"}>
         {text}
         <Button onClick={() => setExpanded(!expanded)} size={"sm"} transform="scale(.8)" colorScheme="yellow" >{expanded ? "Show Less" : "Read More"} </Button>{" "}
       </Text>

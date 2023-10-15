@@ -10,8 +10,8 @@ const useGameDetail = (slug: string) => {
         queryFn: () => {
            return apiClient.get(slug); 
         }
-
     })
+    
 }
 
 export default useGameDetail;

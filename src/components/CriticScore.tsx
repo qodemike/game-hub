@@ -1,4 +1,4 @@
-import { Badge, Text } from "@chakra-ui/react";
+import { Badge, Box, Text } from "@chakra-ui/react";
 
 interface Props {
   score: number;
@@ -12,12 +12,15 @@ const CriticScore = ({ score }: Props) => {
   return (
     // colorScheme is a color theme for the whole component.
     <>
+    <Box>
     {
       score ? <Badge borderRadius="4px" colorScheme={color} fontSize={"12px"}>
                 <Text py="2px" px="3px" fontFamily={"Poppins"}>{score}</Text> 
               </Badge> : 
       null 
     }
+
+    </Box>
     </>
   );
 };

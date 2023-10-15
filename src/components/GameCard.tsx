@@ -21,7 +21,7 @@ function GameCard({ game }: Props) {
   return (
     <Card className={styles.card}>
       <Image src={getCroppedImageUrl(game.background_image)}></Image>
-      <CardBody className={styles.cardBody} paddingTop={3}>
+      <CardBody className={styles.cardBody} paddingTop={2}>
         <VStack
           gap={"15px"}
           justifyContent={"space-between"}
@@ -36,7 +36,7 @@ function GameCard({ game }: Props) {
             <CriticScore score={game.metacritic}></CriticScore>
           </HStack>
           <Link to={`games/${game.slug}`}>
-            <Heading className={styles.gamecardTitle} fontSize={"24px"}>
+            <Heading fontFamily={"Inter"} className={styles.gamecardTitle} fontSize={"24px"}>
               {game.name}
             </Heading>
           </Link>
