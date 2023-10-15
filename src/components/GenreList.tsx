@@ -11,7 +11,7 @@ const GenreList = () => {
   const {scrollToTop} = useGameQueryStore();
   const setGenre = useGameQueryStore(s => s.setGenre);
   const  gameQuery = useGameQueryStore(s => s.gameQuery);
-  const { data, isLoading } = useGenres();
+  const { data, isLoading, error} = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   const [collapse, setCollapse] = useState(true);
   const listRef = useRef<HTMLUListElement>(null);
@@ -23,6 +23,8 @@ const GenreList = () => {
     }
     setCollapse(!collapse);
   };
+
+  if (error) return null ;
 
   return (
     <>

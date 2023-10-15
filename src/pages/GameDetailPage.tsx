@@ -1,6 +1,5 @@
 import GameDescription from "../components/GameDescription"
 
-
 const GameDetailPage = () => {
   return (
     <>

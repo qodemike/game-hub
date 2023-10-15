@@ -11,6 +11,7 @@ import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-cropping";
 import styles from "./GameCard.module.css";
+import { Link } from "react-router-dom";
 
 interface Props {
   game: Games;
@@ -34,9 +35,11 @@ function GameCard({ game }: Props) {
             ) : null}
             <CriticScore score={game.metacritic}></CriticScore>
           </HStack>
+          <Link to={`games/${game.slug}`} >
           <Heading className={styles.gamecardTitle} fontSize={"24px"}>
             {game.name}
           </Heading>
+          </Link>
         </VStack>
       </CardBody>
     </Card>

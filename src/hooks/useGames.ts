@@ -5,6 +5,7 @@ import useGameQueryStore from "../store";
 
 export interface Games {
   id: number;
+  slug: string;
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
@@ -30,8 +31,6 @@ export const useGames = () => {
   getNextPageParam: (lastPage, allPages) =>  {
     return lastPage.next ? allPages.length + 1 : undefined;
   },
-  refetchOnWindowFocus: false,  
-  staleTime: 24 * 60 * 60 * 1000 // 24hrs
   });
 };
 

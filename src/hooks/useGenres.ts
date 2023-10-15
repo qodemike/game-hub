@@ -21,7 +21,6 @@ export const useGenres = () => {
   return useQuery({
     queryKey: ["genres"],
     queryFn: () => apiClient.getAll(),
-    staleTime: 24 * 60 * 60 * 1000, // 24hrs
 
     // Setting the intialData Inorder for seamless transitions using the static data we had
     // initialData: { count: genres.length, results: genres },
