@@ -6,21 +6,19 @@ interface Props {
 
 const CriticScore = ({ score }: Props) => {
   let color = score > 80 ? "green" : score > 50 ? "yellow" : "";
-  
-  if (!score){score}
+
+  if (!score) {score}
 
   return (
     // colorScheme is a color theme for the whole component.
     <>
-    <Box>
-    {
-      score ? <Badge borderRadius="4px" colorScheme={color} fontSize={"12px"}>
-                <Text py="2px" px="3px" fontFamily={"Poppins"}>{score}</Text> 
-              </Badge> : 
-      null 
-    }
-
-    </Box>
+      <Box>
+        {
+          <Badge borderRadius="4px" colorScheme={color} >
+            <Text py="2px" px="3px" fontFamily={"Inter"}>{score ||  "N/A"}</Text>
+          </Badge>
+        }
+      </Box>
     </>
   );
 };

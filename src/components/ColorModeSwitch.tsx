@@ -3,7 +3,8 @@ import { SunIcon } from "@chakra-ui/icons";
 import { HiMoon} from "react-icons/hi";
 
 function ThemeToggleSwitch() {
-  const { toggleColorMode, colorMode } = useColorMode(); // returns an object with properties, so we destructure it
+  // Returns an object with properties, so we destructure it
+  const { toggleColorMode, colorMode } = useColorMode();
 
   return (
     <HStack color="rgb(236 236 237)">

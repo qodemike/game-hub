@@ -1,8 +1,8 @@
-import { Genre } from "./Genre";
-import { Platform } from "./Platform";
-import { Publisher } from "./Publisher";
+import Genre  from "./Genre";
+import Platform  from "./Platform";
+import Publisher  from "./Publisher";
 
-interface Games {
+export default interface Games {
   id: number;
   slug: string;
   name: string;
@@ -14,6 +14,7 @@ interface Games {
   background_image_additional: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  released: string;
+  rating: number;
 }
 
-export default Games;

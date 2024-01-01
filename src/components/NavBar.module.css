@@ -1,6 +1,12 @@
-@media screen and (min-width: 768px) {
-  .navBar {
-  }
+
+.navBar{
+  width: 100vw;
+  height: 80px;
+  z-index: 5;
+  padding-top: 20px;
+  position: fixed;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
 }
 .logo {
   width: 200px;

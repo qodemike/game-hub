@@ -1,7 +1,15 @@
 .form{
     transform: scale(.9);
     width: 100%;
+    max-width: 560px;
+}
+
+.searchInput{
+    /* background-color: ; */
 }
 .searchIcon{
+    width: 17px;
+    height: 21px;
     cursor:pointer;
 }
+

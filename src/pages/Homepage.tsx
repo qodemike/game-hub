@@ -6,54 +6,35 @@ import SortSelector from "../components/SortSelector";
 import PlatformSelector from "../components/PlatformSelector";
 import GameGrid from "../components/GameGrid";
 
-
 const Homepage = () => {
   return (
-    <Grid
-      templateAreas={{
-        base: `" main"`,
-        lg: `"aside main"`,
-      }}
-      templateColumns={{
-        base: "1fr",
-        lg: "230px 1fr",
-      }}
-      templateRows={{
-        lg: "64px 1fr",
-      }}
-    >
-      <Show above="lg">
-        <GridItem area="aside">
-          <GenreList></GenreList>
-        </GridItem>
-      </Show>
-      
-      <GridItem area="main">
-        <Box marginTop={"40px"} marginX={7}>
-          <GamesHeading></GamesHeading>
-          <HStack
-            marginTop={"20px"}
-            position={"relative"}
-            left={"-6px"}
-            zIndex="1"
-          >
-            <Box transform={"scale(.9)"}>
-              <ClearFilterButton />
-            </Box>
-            <Box transform={"scale(.9)"}>
-              <PlatformSelector />
-            </Box>
-            <Box transform={"scale(.9)"}>
-              <SortSelector />
-            </Box>
-          </HStack>
-          <Box marginTop={"15px"}>
-            <GameGrid />
+    <>
+      <Box marginLeft={"40px"} marginRight={"20px"} >
+        <HStack
+          display={{ base: "none", md: "flex" }}
+          position={"fixed"}
+          marginRight={"20px"}
+          right={0}
+          marginTop={"4px"}
+        >
+          <Box flexShrink={0}>
+            <ClearFilterButton />
           </Box>
-        </Box>
-      </GridItem>
-    </Grid>
-  )
-}
+          <Box flexShrink={0}>
+            <PlatformSelector />
+          </Box>
+          <Box flexShrink={0}>
+            <SortSelector />
+          </Box>
+        </HStack>
 
-export default Homepage
+          <Box paddingTop={"50px"} paddingBottom={"10px"}>
+            <GamesHeading></GamesHeading>
+          </Box>
+            <GameGrid />
+      </Box>
+    </>
+  );
+};
+
+export default Homepage;

@@ -7,6 +7,9 @@ const config: ThemeConfig = { // Theme is an object that we imported inorder to 
 const theme = extendTheme({
     config,
     colors:{
+        primary: '#03050B',
+        secondary: '#AC1B1B',
+        white: "#ECECEC",
         gray:{
             // 200: '#bfbfbf',
             // 300: '#a6a6a6',
@@ -14,7 +17,7 @@ const theme = extendTheme({
             // 500: '#737373',
             // 600: '#595959',
             700: '#191D25',//
-            800: '#0E1015',
+            800: '#03050B',
             // 900: '#0d0d0d'
             // #010409 preserve
         }

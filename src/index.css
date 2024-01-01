@@ -1,3 +1,25 @@
 html{
     scroll-behavior: smooth;
 }
+:root{
+    --color-primary: #03050B; 
+    --color-gray: #1D2026;
+    --color-border-line: #3B3B3B;
+    --color-heading: #ECECEC;
+    --color-heading-dark: #ECECEC;
+}
+::-webkit-scrollbar{
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--color-border-line);
+    border-radius: 6px;
+    
+}
+h1, h2, h3{
+    font-family: Inter;
+}
+p{
+    font-family: Poppins;
+}

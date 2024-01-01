@@ -28,16 +28,17 @@ const GenreList = () => {
 
   return (
     <>
-      <Heading
+      <Text
         paddingBottom={"9px"}
         onClick={toggleCollapse}
-        fontSize={"2xl"}
+        fontSize={"18px"}
+        fontWeight={"600"}
         marginLeft={"20px"}
         className={styles.heading}
         fontFamily={"Inter"}
       >
         Genres
-      </Heading>
+      </Text>
       <Box className={styles.genreList}>
         <List
           ref={listRef}

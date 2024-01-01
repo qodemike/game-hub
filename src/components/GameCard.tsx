@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardBody,
   HStack,
@@ -10,7 +11,6 @@ import Games  from "../entities/Games";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-cropping";
-import styles from "./GameCard.module.css";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -19,30 +19,31 @@ interface Props {
 
 function GameCard({ game }: Props) {
   return (
-    <Card className={styles.card}>
-      <Image src={getCroppedImageUrl(game.background_image)}></Image>
-      <CardBody className={styles.cardBody} paddingTop={2}>
+    <Box marginBottom={"30px"}>
+      
+      <Link to={`games/${game.slug}`}>
+      <Image borderRadius={"10px"} src={getCroppedImageUrl(game.background_image)}></Image>
+      </Link>
         <VStack
           gap={"15px"}
           justifyContent={"space-between"}
           alignItems={"left"}
         >
-          <HStack className={styles.gamecardIconsSection}>
+          <HStack  justifyContent={"space-between"} marginTop={"10px"}>
             {game.parent_platforms ? (
               <PlatformIconList
                 platforms={game.parent_platforms.map((p) => p.platform)}
               ></PlatformIconList>
             ) : null}
-            <CriticScore score={game.metacritic}></CriticScore>
+            <Box >
+              <CriticScore score={game.metacritic}></CriticScore>
+            </Box>
           </HStack>
           <Link to={`games/${game.slug}`}>
-            <Heading fontFamily={"Inter"} className={styles.gamecardTitle} fontSize={"24px"}>
-              {game.name}
-            </Heading>
+            <Heading _hover={{color: "gray.400"}} fontFamily={"Inter"} fontSize={"22px"}>{game.name}</Heading>
           </Link>
         </VStack>
-      </CardBody>
-    </Card>
+    </Box>
   );
 }
 

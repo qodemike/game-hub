@@ -40,15 +40,9 @@ function App() {
             left={"-6px"}
             zIndex="1"
           >
-            <Box transform={"scale(.9)"}>
               <ClearFilterButton />
-            </Box>
-            <Box transform={"scale(.9)"}>
               <PlatformSelector />
-            </Box>
-            <Box transform={"scale(.9)"}>
               <SortSelector />
-            </Box>
           </HStack>
           <Box marginTop={"15px"}>
             <GameGrid />
