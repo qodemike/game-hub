@@ -1,4 +1,4 @@
-import { Box, HStack, Image } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Image } from "@chakra-ui/react";
 import logo from "../assets/Logo.svg";
 import ColorModeSwitch from "./ColorModeSwitch";
 import styles from "./NavBar.module.css";
@@ -9,13 +9,35 @@ function NavBar() {
   return (
     <>
       <Box className={styles.navBar}>
-        <HStack paddingX={{base:" 0 ", lg: "16px"}} justifyContent={"space-between"}>
-          <Link to="/">
-            <Image src={logo} className={styles.logo} />
-          </Link>
-          <SearchInput />
-          <ColorModeSwitch></ColorModeSwitch>
-        </HStack>
+        <Grid
+          padding={{ base: " 0 10px 0 20px", sm: "20px" }}
+          templateAreas={`"left middle right"`}
+          alignItems={"center"}
+          width={"100%"}
+          height={"100%"}
+        >
+          <GridItem
+            area={{ base: "middle", sm: "left" }}
+            justifySelf={{ base: "center", sm: "start" }}
+          >
+            <Link to="/">
+              <Image
+                src={logo}
+                width={{base:"150px", md:"200px"}}
+                objectFit={"cover"}
+                cursor={"pointer"}
+              />
+            </Link>
+          </GridItem>
+          <GridItem
+           area={{ base: "left", sm: "middle" }} 
+           >
+            <SearchInput />
+          </GridItem>
+          <GridItem justifySelf={"end"} area={"right"}>
+            <ColorModeSwitch></ColorModeSwitch>
+          </GridItem>
+        </Grid>
       </Box>
     </>
   );

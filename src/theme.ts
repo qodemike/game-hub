@@ -6,6 +6,13 @@ const config: ThemeConfig = { // Theme is an object that we imported inorder to 
 
 const theme = extendTheme({
     config,
+    breakpoints: {
+        sm: '500px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1200px'
+    },
+
     colors:{
         primary: '#03050B',
         secondary: '#AC1B1B',

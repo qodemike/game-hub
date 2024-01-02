@@ -16,6 +16,7 @@ function PlatformSelector() {
         borderRadius={"15px"}
         backgroundColor={"gray.800"}
         _hover={{backgroundColor: "gray.700"}}
+        _active={{backgroundColor: "gray.700"}}
         as={Button}
         rightIcon={<BsChevronDown />}
       >
