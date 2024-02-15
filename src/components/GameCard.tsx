@@ -1,11 +1,10 @@
 import {
   Box,
-  Card,
-  CardBody,
   HStack,
   Heading,
   Image,
   VStack,
+  Text,
 } from "@chakra-ui/react";
 import Games  from "../entities/Games";
 import PlatformIconList from "./PlatformIconList";
@@ -19,10 +18,9 @@ interface Props {
 
 function GameCard({ game }: Props) {
   return (
-    <Box marginBottom={"30px"}>
-      
+    <Box marginBottom={"15px"}>
       <Link to={`games/${game.slug}`}>
-      <Image borderRadius={"10px"} src={getCroppedImageUrl(game.background_image)}></Image>
+      <Image borderRadius={"5px"} src={getCroppedImageUrl(game.background_image)}></Image>
       </Link>
         <VStack
           gap={"15px"}
@@ -39,8 +37,8 @@ function GameCard({ game }: Props) {
               <CriticScore score={game.metacritic}></CriticScore>
             </Box>
           </HStack>
-          <Link to={`games/${game.slug}`}>
-            <Heading _hover={{color: "gray.400"}} fontFamily={"Inter"} fontSize={"22px"}>{game.name}</Heading>
+          <Link to={`games/${game.slug}`  } style={{width: "fit-content"}}>
+            <Heading _hover={{color: "gray.300"}}  fontFamily={"Inter"} fontSize={"20px"}>{game.name}</Heading>
           </Link>
         </VStack>
     </Box>

@@ -1,9 +1,5 @@
 
 .navBar{
-  width: 100vw;
-  height: 80px;
-  z-index: 5;
-  position: fixed;
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
 }

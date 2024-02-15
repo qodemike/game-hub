@@ -1,7 +1,16 @@
-import { Box, Heading, Icon, List, ListItem, Text } from "@chakra-ui/react";
+import { FaCircle } from "react-icons/fa";
+import {
+  Badge,
+  Box,
+  Heading,
+  Icon,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/react";
 import Games from "../entities/Games";
 import ExpandableText from "./ExpandableText";
-import { FaCircle } from "react-icons/fa";
+import CriticScore from "./CriticScore";
 interface Props {
   data: Games;
 }
@@ -13,36 +22,39 @@ const GameAttributes = ({ data }: Props) => {
 
   return (
     <>
-      <Heading fontSize={{ base: "26px", md: "40px" }}>{data.name}</Heading>
-      <Box margin={"10px 0  20px 0px"}>
-        <Text
-          marginRight={"40px"}
-          fontFamily={"Poppins"}
-          fontSize={"14px"}
-          display={"inline"}
-        >
-          {year}
-        </Text>
-        {data.genres.map((g) => (
-          <Text marginLeft={"20px"} fontSize={"13px"} display={"inline"}>
-            {g.name.toUpperCase()}
-          </Text>
-        ))}
-      </Box>
-      <ExpandableText>{data.description_raw}</ExpandableText>
-      <List marginTop={"20px"}  >
-        {data.platforms.map((p) => (
-          <ListItem whiteSpace={"nowrap"} marginRight={"20px"}  display={"inline"}>
+      <Box>
+        <Heading fontSize={{ base: "26px", md: "40px" }}>{data.name}</Heading>
+        <Box margin={"10px 0  20px 0px"} display={"flex"}  alignItems={"center"} gap={10}>
+          <Text display={"flex"}  alignItems={"center"} gap={2}>
             <Icon
               boxSize={1.5}
               fill={"white"}
-              display={"inline"}
               as={FaCircle}
             />
-            <Text marginLeft={"10px"} fontSize={"13px"} display={"inline"}>{p.platform.name}</Text>
-          </ListItem>
-        ))}
-      </List>
+            {year}
+          </Text>
+          <Box display={"flex"} flexWrap={'wrap'} alignItems={"center"} gap={0}>
+          <Icon
+              boxSize={1.5}
+              fill={"white"}
+              as={FaCircle}
+            />
+            {data.genres.map((genre) => (
+              <Text
+                key={genre.id}
+                marginLeft={"20px"}
+                fontSize={"13px"}
+              >
+                {genre.name.toUpperCase()}
+              </Text>
+            ))}
+          </Box>
+          <Box position={"relative"} top={"-3px"}>
+            <CriticScore score={data.metacritic}></CriticScore>
+          </Box>
+        </Box>
+        <ExpandableText>{data.description_raw}</ExpandableText>
+      </Box>
     </>
   );
 };

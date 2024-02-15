@@ -5,7 +5,7 @@ interface Props{
 }
 
 const GameTrailer = ({gameId}: Props) => {
-  const {data, error, isLoading} = useTrailers(gameId);
+  const {data, error} = useTrailers(gameId);
   
   const video = data?.results[0];
 

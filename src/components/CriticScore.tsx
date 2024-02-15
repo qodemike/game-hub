@@ -14,8 +14,8 @@ const CriticScore = ({ score }: Props) => {
     <>
       <Box>
         {
-          <Badge borderRadius="4px" colorScheme={color} >
-            <Text py="2px" px="3px" fontFamily={"Inter"}>{score ||  "N/A"}</Text>
+          <Badge  colorScheme={color} >
+            <Text >{score ||  "N/A"}</Text>
           </Badge>
         }
       </Box>

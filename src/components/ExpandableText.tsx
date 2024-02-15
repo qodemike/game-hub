@@ -6,9 +6,10 @@ interface Props {
 }
 
 const ExpandableText = ({ children }: Props) => {
-  const limit = 400;
+  const limit = 700;
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const text = children.substring(0, limit) + "... ";
+  const text = isExpanded ? children.substring(0,1200) : children.substring(0, limit)+"...";
 
   return (
     <>
@@ -17,7 +18,13 @@ const ExpandableText = ({ children }: Props) => {
         fontSize={"14px"}
         fontFamily={"Inter"}
         fontWeight={"300"}
-      >{text}
+      >
+        {text}
+        {isExpanded ? (
+          <Button onClick={() => setIsExpanded(false)} size={"xs"}  colorScheme={"yellow"}>read less</Button>
+        ) : (
+          <Button onClick={() => setIsExpanded(true)} size={"xs"} colorScheme={"yellow"} marginLeft={"5px"}>read more</Button>
+        )}
       </Text>
     </>
   );

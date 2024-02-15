@@ -4,9 +4,10 @@ html{
 :root{
     --color-primary: #03050B; 
     --color-gray: #1D2026;
-    --color-border-line: #3B3B3B;
+    --color-accent: #AC1B1B;
+    --color-border-line: #292929;
+    --color-line: #252f42;
     --color-heading: #ECECEC;
-    --color-heading-dark: #ECECEC;
 }
 ::-webkit-scrollbar{
     width: 5px;
@@ -17,9 +18,11 @@ html{
     border-radius: 6px;
     
 }
+
 h1, h2, h3{
     font-family: Inter;
 }
-p{
+
+p, span{
     font-family: Poppins;
 }

@@ -1,5 +1,4 @@
 import { Button } from "@chakra-ui/react";
-import styles from "./ClearFilterButton.module.css";
 import useGameQueryStore from "../store";
 
 function PlatformSelector() {
@@ -13,7 +12,6 @@ function PlatformSelector() {
       color={"gray.900"}
       borderRadius={"15px"}
       fontSize={"14px"}
-      className={styles.btn}
     >
       Clear filters
     </Button>

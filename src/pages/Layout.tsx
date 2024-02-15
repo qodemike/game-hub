@@ -1,7 +1,7 @@
 import { Box, Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import { Outlet } from "react-router-dom";
-import GenreList from "../components/GenreList";
+import Sidebar from "../components/Sidebar";
 
 const Layout = () => {
   return (
@@ -23,23 +23,20 @@ const Layout = () => {
           <NavBar></NavBar>
         </GridItem>
 
-        
-
         <Show above="lg">
-          <GridItem area="aside">
-            <Box position={"fixed"} maxWidth={"240px"}>
-            <GenreList></GenreList>
+          <GridItem area="aside" >
+            <Box position={"fixed"} width={"240px"} paddingLeft={"15px"} paddingTop={"10px"} >
+              <Sidebar />
             </Box>
           </GridItem>
         </Show>
 
-
-
         <GridItem area="main">
+          <Box position={"relative"} top={"-50px"} paddingLeft={{ base: "0px", lg:"50px"}}>
           <Outlet />
+          </Box>
         </GridItem>
       </Grid>
-
     </>
   );
 };
