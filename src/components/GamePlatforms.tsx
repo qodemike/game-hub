@@ -9,7 +9,7 @@ interface Props {
 const GamePlatforms = ({ data }: Props) => {
   return (
     <>
-      <Heading>Platforms</Heading>
+      <Heading fontFamily={"Inter"}>Platforms</Heading>
       <List marginTop={"30px"} display={"flex"} flexWrap={"wrap"}  gap={8} >
         {data.platforms.map((p, index) => (
           <ListItem

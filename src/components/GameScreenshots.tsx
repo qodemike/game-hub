@@ -14,7 +14,7 @@ const GameScreenshot = ({gameId}: Props) => {
   
   return (
     <>
-    <Heading  >
+    <Heading  fontFamily={"Inter"}>
             Screenshots
     </Heading>
     <Box borderBottom={"1px"} borderColor={'var(--color-line)'} marginTop={"10px"} ></Box>

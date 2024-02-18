@@ -20,14 +20,14 @@ function GameCard({ game }: Props) {
   return (
     <Box marginBottom={"15px"}>
       <Link to={`games/${game.slug}`}>
-      <Image borderRadius={"5px"} src={getCroppedImageUrl(game.background_image)}></Image>
+      <Image borderRadius={"10px"} src={getCroppedImageUrl(game.background_image)}></Image>
       </Link>
         <VStack
-          gap={"15px"}
+          gap={"10px"}
           justifyContent={"space-between"}
           alignItems={"left"}
         >
-          <HStack  justifyContent={"space-between"} marginTop={"10px"}>
+          <HStack  justifyContent={"space-between"} marginTop={"7px"}>
             {game.parent_platforms ? (
               <PlatformIconList
                 platforms={game.parent_platforms.map((p) => p.platform)}

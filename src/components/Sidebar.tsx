@@ -9,7 +9,7 @@ const Sidebar = () => {
   >("Home");
 
   return (
-    <Box>
+    <Box height={'85vh'} >
       <Box
         borderBottom={"1px"}
         borderColor={"var(--color-line)"}
@@ -64,7 +64,7 @@ const Sidebar = () => {
             transition={"all"}
             transitionDuration={"100ms"}
             transitionTimingFunction={"ease"}
-            _hover={ clickedOption === "Trending" ? {} : { background: "var(--color-gray)" }}
+            _hover={ clickedOption === "Trending" ? {} : { background: "gray.900" }}
 
           >
             <Text fontFamily={"Inter"}>Trending</Text>
@@ -74,6 +74,9 @@ const Sidebar = () => {
       <Box marginTop={"20px"}>
         <GenreList></GenreList>
       </Box>
+      <Link to={''}>
+      <Text marginTop={'40px'} marginLeft={'20px'} fontFamily={"Inter"} fontSize={'12px'}  color={'gray.500'}> Copyright @ QodeMike 2022 </Text>
+      </Link>
     </Box>
   );
 };

@@ -1,5 +1,7 @@
 html{
     scroll-behavior: smooth;
+    font-family: Inter;
+
 }
 :root{
     --color-primary: #03050B; 
@@ -19,6 +21,9 @@ html{
     
 }
 
+::-webkit-scrollbar-corner {
+    display: none;
+}
 h1, h2, h3{
     font-family: Inter;
 }
