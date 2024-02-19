@@ -1,88 +1,145 @@
 import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
 import {
-  IconButton,
+  Text,
+  Box,
+  Spinner,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Icon,
-  HStack,
 } from "@chakra-ui/react";
-import { TfiAngleLeft } from "react-icons/tfi";
-import styles from "./SearchInput.module.css";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import useGameQueryStore from "../store";
 import { useNavigate } from "react-router-dom";
+import useSearchBar from "../hooks/useSearchBar";
+import Games from "../entities/Games";
 
-const  SearchBar = () => {
+const SearchBar = () => {
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
-  const ref = useRef<HTMLInputElement>(null);
   const { scrollToTop } = useGameQueryStore();
-  const [hasType, setHasType] = useState(false);
+  const [dynamicSearchText, setDynamicSearchText] = useState("");
+  const inputRef = useRef<HTMLInputElement>({} as HTMLInputElement);
   const navigate = useNavigate();
+
+  const { data: suggestions, isFetching } = useSearchBar(dynamicSearchText);
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    if (ref.current?.value) {
-      scrollToTop();
-      setSearchText(ref.current.value);
-    }
+    scrollToTop();
+    setSearchText(inputRef.current.value);
     navigate("/");
   };
 
-  const handleTyping = () => {
-    if (ref.current?.value) {
-      setHasType(true);
-    } else setHasType(false);
+  const handleOnChange = () => {
+    setDynamicSearchText(inputRef.current.value);
   };
 
-  const handleClearSearch = () => {
-    if (ref.current?.value) {
-      ref.current.value = "";
-      setHasType(false);
-    }
+  const handleOnClearSearch = () => {
+    inputRef.current.value = "";
+    setDynamicSearchText("");
   };
 
+  const handleSelectSuggestion = (game: Games) => {
+    setSearchText(game.name);
+    setDynamicSearchText("");
+    navigate("/");
+  };
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSearch}>
-        <InputGroup>
-          <InputLeftElement paddingLeft={"30px"}>
-            <SearchIcon
-              width={"20px"}
-              height={"20px"}
-              cursor={"pointer"}
-              color={"gray"}
-              onClick={handleSearch}
-            />
-          </InputLeftElement>
-          <Input
-            ref={ref}
-            paddingY={"20px"}
-            paddingLeft={"57px"}
-            fontFamily={"Inter"}
-            backgroundColor={"var(--color-gray)"}
-            _hover={{ backgroundColor: "gray.900" }}
-            _focus={{ backgroundColor: "gray.900" }}
-            borderRadius={"10px"}
-            placeholder="Search"
-            variant={"filled"}
-            onChange={handleTyping}
-          />
-          <InputRightElement paddingRight={"30px"}>
-            <IconButton
-              aria-label="Clear Search Text"
-              icon={<CloseIcon />}
-              variant="unstyled"
-              display={hasType ? "inline" : "none"}
-              onClick={handleClearSearch}
-            />
-          </InputRightElement>
-        </InputGroup>
-      </form>
+      <Box>
+        <form
+          onSubmit={handleSearch}
+          style={{ position: "relative", width: "450px" }}
+        >
+          <InputGroup
+            position={"absolute"}
+            transition={"all"}
+            top={"-20px"}
+            display={"flex"}
+            flexDirection={"column"}
+          >
+            <Box width={"full"}>
+              <InputLeftElement marginLeft={"5px"}>
+                <SearchIcon
+                  width={"20px"}
+                  height={"20px"}
+                  cursor={"pointer"}
+                  color={"gray"}
+                  onClick={handleSearch}
+                />
+              </InputLeftElement>
+              <Input
+                ref={inputRef}
+                paddingY={"10px"}
+                paddingLeft={"50px"}
+                fontFamily={"Inter"}
+                fontSize={"sm"}
+                background={"gray.700"}
+                _hover={{ background: "gray.900" }}
+                _focus={{ background: "gray.900" }}
+                borderRadius={"10px"}
+                placeholder="Search"
+                variant={"unstyled"}
+                onChange={handleOnChange}
+              />
+              <InputRightElement paddingRight={"30px"}>
+                <CloseIcon
+                  width={"12px"}
+                  cursor={"pointer"}
+                  onClick={handleOnClearSearch}
+                  display={ inputRef.current.value ? "inline" : "none"}
+                />
+              </InputRightElement>
+            </Box>
+
+            {dynamicSearchText &&
+              (isFetching ? (
+                <Box
+                  minHeight={'205px'}
+                  background={"gray.800"}
+                  border={"1px solid var(--color-line)"}
+                  borderRadius={"10px"}
+                  display={"flex"}
+                  justifyContent={'center'}
+                  alignItems={'center'}
+                >
+                  <Spinner/>
+                </Box>
+              ) : (
+                <Box
+                  background={"gray.800"}
+                  border={"1px solid var(--color-line) "}
+                  borderRadius={"10px"}
+                  display={"flex"}
+                  flexDirection={"column"}
+                  flexShrink={"nowrap"}
+                  overflow={"hidden"}
+                >
+                { suggestions?.results.length ?  suggestions?.results.map((game) => (
+                    <Text
+                      onClick={() => handleSelectSuggestion(game)}
+                      paddingY={"10px"}
+                      paddingX={"20px"}
+                      fontSize={"sm"}
+                      _hover={{ background: "gray.700" }}
+                      cursor={"pointer"}
+                    >
+                      {game.name}
+                    </Text>
+                  ))
+                :
+                <Text paddingY={"20px"} paddingX={"30px"} color={"gray.500"} fontSize={"sm"}>
+                  No Results Found
+                </Text>
+                }
+                </Box>
+              ))}
+          </InputGroup>
+        </form>
+      </Box>
     </>
   );
-}
+};
 
 export default SearchBar;

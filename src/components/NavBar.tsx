@@ -5,8 +5,12 @@ import { CloseIcon, SearchIcon } from "@chakra-ui/icons";
 import styles from "./NavBar.module.css";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import useGameQueryStore from "../store";
 
 function NavBar() {
+
+  const clearGameQuery = useGameQueryStore((store) => store.clearGameQuery)
+
   return (
     <>
       <Box className={styles.navBar} width={"100vw"} height={"80px"} zIndex={5} position={"fixed"}>
@@ -21,7 +25,7 @@ function NavBar() {
             area={{ base: "middle", sm: "left" }}
             justifySelf={{ base: "center", sm: "start" }}
           >
-            <Link to="/">
+            <Link to="/" onClick={clearGameQuery}>
               <Image
                 src={logo}
                 width={{ base: "150px", md: "200px" }}

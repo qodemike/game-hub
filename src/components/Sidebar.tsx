@@ -1,7 +1,7 @@
 import { Box, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import GenreList from "./GenreList";
-import { useRef, useState } from "react";
+import {  useState } from "react";
 
 const Sidebar = () => {
   const [clickedOption, setClickedOption] = useState<
@@ -75,7 +75,7 @@ const Sidebar = () => {
         <GenreList></GenreList>
       </Box>
       <Link to={''}>
-      <Text marginTop={'40px'} marginLeft={'20px'} fontFamily={"Inter"} fontSize={'12px'}  color={'gray.500'}> Copyright @ QodeMike 2022 </Text>
+      <Text marginTop={'50px'}  fontFamily={"Inter"} fontSize={'12px'}  color={'gray.500'}> © 2024 QodeMike</Text>
       </Link>
     </Box>
   );

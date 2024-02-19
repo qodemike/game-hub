@@ -19,6 +19,7 @@ interface GameQueryStore {
   scrollToTop: () => void;
 }
 
+
 const useGameQueryStore = create<GameQueryStore>((set) => {
   return {
     gameQuery: {},

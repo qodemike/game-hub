@@ -31,7 +31,7 @@ function SortSelector() {
         as={Button}
         rightIcon={<BsChevronDown />}
       >
-        <span className={styles.buttonText}> Sort by:</span>{" "}
+        <span  className={styles.buttonText}> Sort by:</span>{" "}
         <strong className={styles.buttonStrong}>
           {" "}
           {order?.label || "Relevance"}

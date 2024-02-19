@@ -6,7 +6,6 @@ export interface FetchResponse<T> {
   results: T[];
 }
 
-
 export const axiosInstance = axios.create({
   baseURL: "https://api.rawg.io/api",
   params: {

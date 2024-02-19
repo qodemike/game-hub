@@ -20,7 +20,7 @@ function GameCard({ game }: Props) {
   return (
     <Box marginBottom={"15px"}>
       <Link to={`games/${game.slug}`}>
-      <Image borderRadius={"10px"} src={getCroppedImageUrl(game.background_image)}></Image>
+      <Image minH={'218px'} borderRadius={"10px"} src={getCroppedImageUrl(game.background_image)}></Image>
       </Link>
         <VStack
           gap={"10px"}
