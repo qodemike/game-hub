@@ -1,7 +1,7 @@
 import { Box, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import GenreList from "./GenreList";
-import {  useState } from "react";
+import { useState } from "react";
 
 const Sidebar = () => {
   const [clickedOption, setClickedOption] = useState<
@@ -9,7 +9,7 @@ const Sidebar = () => {
   >("Home");
 
   return (
-    <Box height={'85vh'} >
+    <Box height={"85vh"}>
       <Box
         borderBottom={"1px"}
         borderColor={"var(--color-line)"}
@@ -29,8 +29,11 @@ const Sidebar = () => {
             borderRadius={"10px"}
             transition={"all"}
             transitionDuration={"100ms"}
-            _hover={ clickedOption === "Home" ? {} : { background: "var(--color-gray)" }}
-
+            _hover={
+              clickedOption === "Home"
+                ? {}
+                : { background: "var(--color-gray)" }
+            }
           >
             <Text fontFamily={"Inter"}>Home</Text>
           </Box>
@@ -45,7 +48,11 @@ const Sidebar = () => {
             borderRadius={"10px"}
             transition={"all"}
             transitionDuration={"100ms"}
-            _hover={ clickedOption === "Browse" ? {} : { background: "var(--color-gray)" }}
+            _hover={
+              clickedOption === "Browse"
+                ? {}
+                : { background: "var(--color-gray)" }
+            }
           >
             <Text fontFamily={"Inter"}>Browse</Text>
           </Box>
@@ -56,7 +63,6 @@ const Sidebar = () => {
             paddingY={"10px"}
             paddingX={"25px"}
             fontWeight={"light"}
-
             background={
               clickedOption === "Trending" ? "var(--color-accent)" : ""
             }
@@ -64,19 +70,17 @@ const Sidebar = () => {
             transition={"all"}
             transitionDuration={"100ms"}
             transitionTimingFunction={"ease"}
-            _hover={ clickedOption === "Trending" ? {} : { background: "gray.900" }}
-
+            _hover={
+              clickedOption === "Trending" ? {} : { background: "gray.900" }
+            }
           >
             <Text fontFamily={"Inter"}>Trending</Text>
           </Box>
         </Link>
       </Box>
-      <Box marginTop={"20px"}>
+      <Box marginTop={"20px"} >
         <GenreList></GenreList>
       </Box>
-      <Link to={''}>
-      <Text marginTop={'50px'}  fontFamily={"Inter"} fontSize={'12px'}  color={'gray.500'}> © 2024 QodeMike</Text>
-      </Link>
     </Box>
   );
 };

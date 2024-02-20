@@ -17,6 +17,7 @@ import Games from "../entities/Games";
 const SearchBar = () => {
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
   const { scrollToTop } = useGameQueryStore();
+  const { setShowSearchBar } = useGameQueryStore()
   const [dynamicSearchText, setDynamicSearchText] = useState("");
   const inputRef = useRef<HTMLInputElement>({} as HTMLInputElement);
   const navigate = useNavigate();
@@ -37,20 +38,22 @@ const SearchBar = () => {
   const handleOnClearSearch = () => {
     inputRef.current.value = "";
     setDynamicSearchText("");
+    setShowSearchBar(false)
   };
 
   const handleSelectSuggestion = (game: Games) => {
     setSearchText(game.name);
     setDynamicSearchText("");
+    scrollToTop();
     navigate("/");
   };
 
   return (
     <>
-      <Box>
+      <Box >
         <form
           onSubmit={handleSearch}
-          style={{ position: "relative", width: "450px" }}
+          style={{ position: "relative",  }}
         >
           <InputGroup
             position={"absolute"}
@@ -59,7 +62,7 @@ const SearchBar = () => {
             display={"flex"}
             flexDirection={"column"}
           >
-            <Box width={"full"}>
+            <Box >
               <InputLeftElement marginLeft={"5px"}>
                 <SearchIcon
                   width={"20px"}
@@ -78,25 +81,25 @@ const SearchBar = () => {
                 background={"gray.700"}
                 _hover={{ background: "gray.900" }}
                 _focus={{ background: "gray.900" }}
-                borderRadius={"10px"}
+                borderRadius={"full"}
                 placeholder="Search"
                 variant={"unstyled"}
                 onChange={handleOnChange}
               />
-              <InputRightElement paddingRight={"30px"}>
+              <InputRightElement marginRight={"5px"}>
                 <CloseIcon
                   width={"12px"}
                   cursor={"pointer"}
                   onClick={handleOnClearSearch}
-                  display={ inputRef.current.value ? "inline" : "none"}
                 />
               </InputRightElement>
             </Box>
 
+            <Box transform={`${dynamicSearchText ? "scaleY(1)" : "scaleY(0)" } `} transformOrigin={'0 0'} transition={'all'} transitionDuration={'0.2s'} >
             {dynamicSearchText &&
               (isFetching ? (
                 <Box
-                  minHeight={'205px'}
+                  minHeight={'290px'}
                   background={"gray.800"}
                   border={"1px solid var(--color-line)"}
                   borderRadius={"10px"}
@@ -135,6 +138,7 @@ const SearchBar = () => {
                 }
                 </Box>
               ))}
+              </Box>  
           </InputGroup>
         </form>
       </Box>

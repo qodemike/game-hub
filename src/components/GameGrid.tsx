@@ -21,7 +21,7 @@ function GameGrid() {
              >
             <SimpleGrid
                 columns={{ sm: 1, md: 2, lg: 3 }}
-                columnGap={6}
+                columnGap={5}
                 rowGap={8}
                 >
                 {isLoading &&

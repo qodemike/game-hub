@@ -8,7 +8,7 @@ const useSearchBar = (searchText: string) => {
 
   return useQuery({
     queryKey: ["suggestions", searchText],
-    queryFn: () => apiClient.getAll({ params: { search: searchText, page_size: 5 } }),
+    queryFn: () => apiClient.getAll({ params: { search: searchText, page_size: 7 } }),
     cacheTime: 0,
     enabled: !!searchText
   });

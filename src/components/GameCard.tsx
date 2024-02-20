@@ -33,7 +33,7 @@ function GameCard({ game }: Props) {
                 platforms={game.parent_platforms.map((p) => p.platform)}
               ></PlatformIconList>
             ) : null}
-            <Box >
+            <Box marginRight={'10px'} >
               <CriticScore score={game.metacritic}></CriticScore>
             </Box>
           </HStack>

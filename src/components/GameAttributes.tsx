@@ -23,9 +23,9 @@ const GameAttributes = ({ data }: Props) => {
   return (
     <>
       <Box>
-        <Heading fontSize={{ base: "26px", md: "40px" }}>{data.name}</Heading>
+        <Heading fontFamily={'Inter'} fontSize={{ base: "26px", md: "40px" }}>{data.name}</Heading>
         <Box margin={"10px 0  20px 0px"} display={"flex"}  alignItems={"center"} gap={10}>
-          <Text display={"flex"}  alignItems={"center"} gap={2}>
+          <Text fontFamily={'Inter'} display={"flex"}  alignItems={"center"} gap={2}>
             <Icon
               boxSize={1.5}
               fill={"white"}
@@ -44,6 +44,7 @@ const GameAttributes = ({ data }: Props) => {
                 key={genre.id}
                 marginLeft={"20px"}
                 fontSize={"13px"}
+                fontFamily={"Inter"}
               >
                 {genre.name.toUpperCase()}
               </Text>
