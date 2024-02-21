@@ -4,7 +4,7 @@ import useGameQueryStore from "../store";
 const GamesHeading = () => {
   const { gameQuery } = useGameQueryStore();
   return (
-    <Heading fontFamily={"Inter"}  fontSize={"4xl"} display={"flex"} justifyContent={{base:"center", md:"start"}} >
+    <Heading fontFamily={"Inter"}  fontSize={{base:"2xl", md: "3xl"}} display={"flex"} justifyContent={{base:"center", md:"start"}} >
       {`${gameQuery.platform?.name || ""} ${gameQuery.genre?.name || ""} ${ gameQuery.searchText ? `${gameQuery.searchText}` :  ""}`}
     </Heading>
   );

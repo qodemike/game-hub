@@ -27,7 +27,7 @@ const Homepage = () => {
           </Box>
         </HStack>
 
-          <Box paddingTop={{base:"40px", md: "90px"}}  marginBottom={"20px"}>
+          <Box paddingTop={{base:"50px", md: "90px"}}  marginBottom={"20px"}>
             <GamesHeading></GamesHeading>
           </Box>
           <Box>

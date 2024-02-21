@@ -7,12 +7,15 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Icon,
 } from "@chakra-ui/react";
 import { FormEvent, useRef, useState } from "react";
 import useGameQueryStore from "../store";
 import { useNavigate } from "react-router-dom";
 import useSearchBar from "../hooks/useSearchBar";
 import Games from "../entities/Games";
+import { IoCloseCircleSharp } from "react-icons/io5";
+
 
 const SearchBar = () => {
   const setSearchText = useGameQueryStore((s) => s.setSearchText);
@@ -87,11 +90,7 @@ const SearchBar = () => {
                 onChange={handleOnChange}
               />
               <InputRightElement marginRight={"5px"}>
-                <CloseIcon
-                  width={"12px"}
-                  cursor={"pointer"}
-                  onClick={handleOnClearSearch}
-                />
+                <IoCloseCircleSharp onClick={handleOnClearSearch} style={{cursor: 'pointer'}} size={22} fill={"var(--color-heading)"} />
               </InputRightElement>
             </Box>
 
