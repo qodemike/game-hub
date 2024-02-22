@@ -6,7 +6,7 @@ function PlatformSelector() {
   return (
     <Button
       onClick={() => clearGameQuery()}
-      _hover={{ backgroundColor: "gray.400" }}
+      _hover={{ backgroundColor: "gray.300" }}
       padding="20px 25px"
       backgroundColor={"gray.100"}
       color={"gray.900"}

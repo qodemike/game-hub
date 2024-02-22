@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes.tsx";
 import "./index.css";
 import theme from "./theme.ts";
+import { AuthContextProvider } from "./context/AuthContextProvider.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <QueryClientProvider client={queryClient}>
+        <AuthContextProvider>
         <RouterProvider router={router} />
+        </AuthContextProvider>
       </QueryClientProvider>
     </ChakraProvider>
   </React.StrictMode>

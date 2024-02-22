@@ -20,8 +20,8 @@ const navigate = useNavigate();
       <Text
         paddingBottom={"9px"}
         fontSize={"18px"}
-        fontWeight={"600"}
-        marginLeft={"20px"}
+        fontWeight={"bold"}
+        marginLeft={"25px"}
         fontFamily={"Inter"}
       >
         Genres
@@ -32,11 +32,11 @@ const navigate = useNavigate();
           maxHeight={"250px"}
           display={"flex"}
           flexDirection={"column"}
-          gap={2}
+          gap={4}
         >
           {isLoading &&
             skeletons.map((skeleton) => (
-              <Box marginLeft={"20px"}>
+              <Box marginLeft={"25px"}>
                 <GenreListSkeleton key={skeleton}></GenreListSkeleton>
               </Box>
             ))}
@@ -54,14 +54,13 @@ const navigate = useNavigate();
               cursor={"pointer"}
               paddingY={"6px"}
               marginX={"10px"}
-              paddingLeft={"10px"}
+              paddingLeft={"15px"}
               borderRadius={"4px"}
               _hover={{
-                background: gameQuery.genre?.id !== genre.id ? "gray.900" : "",
+                background: gameQuery.genre?.id !== genre.id ? "gray.900" : "", color: 'white'
               }}
-              transition={"all"}
-              transitionDuration={"100ms"}
-              transitionTimingFunction={"ease-out"}
+              textColor={'gray.400'} 
+              transition={"all 0.2s "}
             >
               <HStack gap={4}>
                 <Image
@@ -70,7 +69,7 @@ const navigate = useNavigate();
                   boxSize={"50px"}
                   src={getCroppedImageUrl(genre.image_background)}
                 ></Image>
-                <Text fontFamily={"Inter"} fontSize={"13px"} textAlign={"left"}>
+                <Text fontFamily={"Inter"} fontSize={"13px"} textAlign={"left"} >
                   {genre.name}
                 </Text>
               </HStack>

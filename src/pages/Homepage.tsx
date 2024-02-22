@@ -8,13 +8,14 @@ import GameGrid from "../components/GameGrid";
 const Homepage = () => {
   return (
     <>
-      <Box  maxWidth={"90vw"} margin={{base: "0 auto 0 ", md: " 0 auto ", lg:"0 20px "}} >
+      <Box   maxWidth={"90vw"} margin={{base:"0 auto", lg:"0 20px 0 0" }} >
         <HStack
-          display={{ base: "none", md: "flex" }}
+          display={{ base: "flex", md: "flex" }}
           position={"fixed"}
           top={"83px"}
-          marginRight={"20px"}
+          marginRight={{lg:'20px'}}
           right={0}
+          zIndex={4}
         >
           <Box flexShrink={0}>
             <ClearFilterButton />
@@ -30,6 +31,7 @@ const Homepage = () => {
           <Box paddingTop={{base:"50px", md: "90px"}}  marginBottom={"20px"}>
             <GamesHeading></GamesHeading>
           </Box>
+
           <Box>
             <GameGrid />
           </Box>

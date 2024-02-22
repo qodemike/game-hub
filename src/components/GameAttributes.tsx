@@ -1,11 +1,8 @@
 import { FaCircle } from "react-icons/fa";
 import {
-  Badge,
   Box,
   Heading,
   Icon,
-  List,
-  ListItem,
   Text,
 } from "@chakra-ui/react";
 import Games from "../entities/Games";
@@ -22,7 +19,7 @@ const GameAttributes = ({ data }: Props) => {
 
   return (
     <>
-      <Box>
+      <Box color={'white'}>
         <Heading fontFamily={'Inter'} fontSize={{ base: "26px", md: "40px" }}>{data.name}</Heading>
         <Box margin={"10px 0  20px 0px"} display={"flex"}  alignItems={"center"} gap={10}>
           <Text fontFamily={'Inter'} display={"flex"}  alignItems={"center"} gap={2}>

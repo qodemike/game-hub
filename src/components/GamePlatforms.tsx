@@ -10,7 +10,7 @@ const GamePlatforms = ({ data }: Props) => {
   return (
     <>
       <Heading fontFamily={"Inter"}>Platforms</Heading>
-      <List marginTop={"30px"} display={"flex"} flexWrap={"wrap"}  gap={8} >
+      <List marginTop={"20px"} display={"flex"} flexWrap={"wrap"}  gap={8} >
         {data.platforms.map((p, index) => (
           <ListItem
             key={index}

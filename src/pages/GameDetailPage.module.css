@@ -1,16 +1,11 @@
 .backgroundImg {
-  height: 300px;
+  height: 320px;
   width: 100%;
   object-fit: cover;
   object-position: middle;
   z-index: -1;
 }
 
-.imgWrapper {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
 
 @media screen and (min-width: 768px) {
   .imgWrapper::before {

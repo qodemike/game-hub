@@ -1,21 +1,24 @@
-import { HStack, Switch, useColorMode, Icon } from "@chakra-ui/react";
+import { HStack, useColorMode, Icon, Text, Box } from "@chakra-ui/react";
 import { SunIcon } from "@chakra-ui/icons";
-import { HiMoon} from "react-icons/hi";
+import { HiMoon } from "react-icons/hi";
 
 function ThemeToggleSwitch() {
-  // Returns an object with properties, so we destructure it
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { colorMode, setColorMode } = useColorMode();
 
   return (
-    <HStack color="rgb(236 236 237)">
-      <SunIcon boxSize={4}></SunIcon>
-      <Switch
-        colorScheme="blue"
-        isChecked={colorMode === "dark"}
-        onChange={toggleColorMode}
-      />
-      <Icon as={HiMoon} boxSize={5} />
-    </HStack>
+    <Box color={"black"} fontSize={"sm"}>
+      {colorMode === "dark" ? (
+        <Box onClick={() => setColorMode("light")} display={"flex"} gap={5}>
+          <SunIcon boxSize={5}></SunIcon>
+          <Text>Light Mode</Text>
+        </Box>
+      ) : (
+        <Box onClick={() => setColorMode("dark")} display={"flex"} gap={5}>
+          <Icon as={HiMoon} boxSize={5} />
+          <Text>Dark Mode</Text>
+        </Box>
+      )}
+    </Box>
   );
 }
 

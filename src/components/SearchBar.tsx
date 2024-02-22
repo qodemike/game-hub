@@ -7,7 +7,6 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Icon,
 } from "@chakra-ui/react";
 import { FormEvent, useRef, useState } from "react";
 import useGameQueryStore from "../store";
@@ -53,7 +52,7 @@ const SearchBar = () => {
 
   return (
     <>
-      <Box >
+      <Box textColor={'white'}>
         <form
           onSubmit={handleSearch}
           style={{ position: "relative",  }}
