@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import { IoMenuSharp } from "react-icons/io5";
 import styles from "./NavBar.module.css";
@@ -15,9 +16,13 @@ function NavBar() {
   const { scrollToTop } = useGameQueryStore();
   const showSearchBar = useGameQueryStore((s) => s.showSearchBar);
   const { setShowSearchBar } = useGameQueryStore();
-  const { googleSignIn,  userCredentials } = userAuth();
+  const { googleSignIn, userCredentials } = userAuth();
+  const toastDivRef = useRef<HTMLDivElement>({} as HTMLDivElement);
+  const [toastSize, setToastSize] = useState<"scale(0)" | "scale(1)">(
+    "scale(0)"
+  );
 
-  const handleOnClick = () => {
+  const handleOnGoToHome = () => {
     clearGameQuery();
     scrollToTop();
   };
@@ -33,6 +38,30 @@ function NavBar() {
       console.log(err);
     }
   };
+
+  const handleOnOpenToast = (e: React.MouseEvent<HTMLDivElement>) => {
+    setToastSize((toastSize) =>
+      toastSize === "scale(0)" ? "scale(1)" : "scale(0)"
+    );
+    e.stopPropagation();
+  };
+
+  const handleCloseToast = (e: MouseEvent) => {
+    if ( !toastDivRef.current.contains(e.target as Node) ) {
+      setToastSize("scale(0)")
+    }
+  };
+
+  useEffect(() => {
+    
+    if(toastSize === 'scale(1)')
+      window.addEventListener("click", handleCloseToast);
+
+    return () => {
+      window.removeEventListener("click", handleCloseToast);
+    };
+
+  }, [handleOnOpenToast]);
 
   return (
     <>
@@ -70,7 +99,7 @@ function NavBar() {
               <IoMenuSharp strokeWidth={1} size={30} />
             </Box>
 
-            <Link to="/" onClick={handleOnClick}>
+            <Link to="/" onClick={handleOnGoToHome}>
               <Text fontWeight={"bold"} fontSize={"2xl"}>
                 GameHub
               </Text>
@@ -94,13 +123,16 @@ function NavBar() {
             area={"right"}
             position={"relative"}
           >
-            {userCredentials.user ? (
-              <img src={userCredentials.user.photoURL as string} />
-            ) : (
-              <LuUserCircle strokeWidth={1} size={40} />
-            )}
+            <Box cursor={"pointer"} onClick={handleOnOpenToast} >
+              {userCredentials.user ? (
+                <img src={userCredentials.user.photoURL as string} />
+              ) : (
+                <LuUserCircle strokeWidth={1} size={40} />
+              )}
+            </Box>
 
             <Box
+              ref={toastDivRef}
               width={"250px"}
               paddingY={"10px"}
               background={"gray.100"}
@@ -110,6 +142,9 @@ function NavBar() {
               right={"0"}
               display={"flex"}
               flexDirection={"column"}
+              transition={"all 0.2s "}
+              transform={toastSize}
+              transformOrigin={"90% 0%"}
             >
               <Box
                 onClick={handleGoogleSignIn}
@@ -124,7 +159,12 @@ function NavBar() {
                   Sign In with Google
                 </Text>
               </Box>
-              <Box paddingX={"20px"} paddingY={'10px'} _hover={{ background: "gray.300" }} cursor={"pointer"}>
+              <Box
+                paddingX={"20px"}
+                paddingY={"10px"}
+                _hover={{ background: "gray.300" }}
+                cursor={"pointer"}
+              >
                 <ColorModeSwitch />
               </Box>
             </Box>

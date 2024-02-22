@@ -35,8 +35,8 @@ const navigate = useNavigate();
           gap={4}
         >
           {isLoading &&
-            skeletons.map((skeleton) => (
-              <Box marginLeft={"25px"}>
+            skeletons.map((skeleton, index) => (
+              <Box marginLeft={"25px"} key={index} >
                 <GenreListSkeleton key={skeleton}></GenreListSkeleton>
               </Box>
             ))}
