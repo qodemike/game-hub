@@ -4,29 +4,46 @@ import ClearFilterButton from "../components/ClearFilterButton";
 import SortSelector from "../components/SortSelector";
 import PlatformSelector from "../components/PlatformSelector";
 import GameGrid from "../components/GameGrid";
+import Draggable from "react-draggable";
+import { useEffect, useState } from "react";
 
 const Homepage = () => {
+  const [dragDisabled, setDragDisabled] = useState(true);
+
+  useEffect(() => {
+    if (window.innerWidth < 700) setDragDisabled(false)
+      else setDragDisabled(true)
+    console.log('somethings changing')
+  }, [window.innerWidth]);
+
   return (
     <>
       <Box maxWidth={"90vw"} margin={{ base: "0 auto", lg: "0 20px 0 0" }}>
-        <HStack
-          display={{ base: "flex", md: "flex" }}
-          position={"fixed"}
-          top={"83px"}
-          marginRight={{ lg: "20px" }}
-          right={0}
-          zIndex={4}
+        <Draggable
+          axis="x"
+          bounds={{ right: 0, left: -150 }}
+          disabled={dragDisabled}
         >
-          <Box>
-            <ClearFilterButton />
-          </Box>
-          <Box>
-            <PlatformSelector />
-          </Box>
-          <Box>
-            <SortSelector />
-          </Box>
-        </HStack>
+          <HStack
+            display={{ base: "flex", md: "flex" }}
+            position={"fixed"}
+            top={"83px"}
+            marginRight={{ lg: "20px" }}
+            right={{ lg: 0 }}
+            zIndex={5}
+          >
+            <Box>
+              <ClearFilterButton />
+            </Box>
+            <Box>
+              <PlatformSelector />
+            </Box>
+            <Box>
+              <SortSelector />
+            </Box>
+          </HStack>
+        </Draggable>
+
         <Box paddingTop={"30px"} marginBottom={"20px"}>
           <GamesHeading></GamesHeading>
         </Box>

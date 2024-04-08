@@ -113,7 +113,6 @@ function NavBar() {
               cursor={"pointer"}
             >
               <IoMenuSharp
-                onClick={handleShowSideBar}
                 strokeWidth={1}
                 size={30}
                 cursor={"pointer"}
@@ -157,7 +156,7 @@ function NavBar() {
                   height={"40px"}
                 />
               ) : (
-                <svg style={{fill: "white", width: "35px", height:"35px"}}>
+                <svg style={{fill: "white", width: "32px", height:"32px"}}>
                   <use xlinkHref={`${Sprite}#person`} />
                 </svg>
               )}
