@@ -113,6 +113,7 @@ function NavBar() {
               cursor={"pointer"}
             >
               <IoMenuSharp
+                onClick={handleShowSideBar}
                 strokeWidth={1}
                 size={30}
                 cursor={"pointer"}

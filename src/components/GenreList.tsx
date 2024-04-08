@@ -32,7 +32,7 @@ const navigate = useNavigate();
           maxHeight={{base: "350px", md: "500px", lg: "250px"}}
           display={"flex"}
           flexDirection={"column"}
-          gap={4}
+          gap={2}
         >
           {isLoading &&
             skeletons.map((skeleton, index) => (

@@ -40,6 +40,9 @@ const Sidebar = () => {
           fontSize={"14px"}
           borderBottom={"1px"}
           borderColor={"var(--color-line)"}
+          display={"flex"}
+          flexDirection={"column"}
+          gap={"5px"}
         >
           <Link to={"/"}>
             <Box
