@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import { Box, Grid, GridItem, Image, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Icon, Image, Text } from "@chakra-ui/react";
 import { IoMenuSharp } from "react-icons/io5";
 import styles from "./NavBar.module.css";
 import SearchBar from "./SearchBar";
 import { SearchIcon } from "@chakra-ui/icons";
-import { LuUserCircle } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import useGameQueryStore from "../store";
 import { userAuth } from "../context/AuthContext";
 import ColorModeSwitch from "./ColorModeSwitch";
 import GoogleIcon from "../assets/google.svg";
 import { IoIosLogOut } from "react-icons/io";
+import Sprite from "../assets/sprite.svg";
 
 function NavBar() {
   const clearGameQuery = useGameQueryStore((store) => store.clearGameQuery);
@@ -18,11 +18,13 @@ function NavBar() {
   const showSearchBar = useGameQueryStore((s) => s.showSearchBar);
   const { setShowSearchBar } = useGameQueryStore();
   const showSideBar = useGameQueryStore((s) => s.showSideBar);
-  const setShowSideBar  = useGameQueryStore((s) => s.setShowSideBar);
+  const setShowSideBar = useGameQueryStore((s) => s.setShowSideBar);
 
   const { googleSignIn, user, logOut } = userAuth();
   const toastDivRef = useRef<HTMLDivElement>({} as HTMLDivElement);
-  const [toastSize, setToastSize] = useState<"scale(0)" | "scale(1)">( "scale(0)");
+  const [toastSize, setToastSize] = useState<"scale(0)" | "scale(1)">(
+    "scale(0)"
+  );
 
   const handleOnGoToHome = () => {
     clearGameQuery();
@@ -34,8 +36,8 @@ function NavBar() {
   };
 
   const handleShowSideBar = () => {
-    setShowSideBar(!showSideBar)
-  }
+    setShowSideBar(!showSideBar);
+  };
 
   const handleGoogleSignIn = async () => {
     try {
@@ -106,7 +108,10 @@ function NavBar() {
             alignItems={"center"}
             gap={5}
           >
-            <Box display={{ base: "none", md: "block", lg: "none" }} cursor={"pointer"}>
+            <Box
+              display={{ base: "none", md: "block", lg: "none" }}
+              cursor={"pointer"}
+            >
               <IoMenuSharp
                 onClick={handleShowSideBar}
                 strokeWidth={1}
@@ -152,7 +157,9 @@ function NavBar() {
                   height={"40px"}
                 />
               ) : (
-                <LuUserCircle strokeWidth={1} size={40} />
+                <svg style={{fill: "white", width: "35px", height:"35px"}}>
+                  <use xlinkHref={`${Sprite}#person`} />
+                </svg>
               )}
             </Box>
 
