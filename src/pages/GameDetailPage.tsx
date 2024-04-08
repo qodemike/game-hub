@@ -25,7 +25,7 @@ const GameDetailPage = () => {
           <Spinner boxSize={10}/>
         </Box>
       ) : (
-        <Box>
+        <Box paddingBottom={"30px"}>
           <Box position={"relative"} top={{base:'-3px', md:"-5px"}} minHeight={{ base: "0", md: "450px", lg: "500px" }}>
             <Box className={styles.imgWrapper} width={'100%'}  overflow={'hidden'} position={'relative'}>
                 <Image

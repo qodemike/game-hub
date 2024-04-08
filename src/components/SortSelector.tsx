@@ -22,7 +22,7 @@ function SortSelector() {
       <MenuButton
         padding={"20px 25px"}
         border={"1px solid var(--color-border-line)"}
-        borderRadius={"15px"}
+        borderRadius={"10px"}
         backgroundColor={"gray.800"}
         _hover={{backgroundColor: "gray.700"}}
         _active={{backgroundColor: "gray.700"}}

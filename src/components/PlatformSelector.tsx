@@ -13,7 +13,7 @@ function PlatformSelector() {
         border={"1px solid var(--color-border-line) "}
         paddingX="25px"
         paddingY="20px"
-        borderRadius={"15px"}
+        borderRadius={"10px"}
         backgroundColor={"gray.800"}
         _hover={{backgroundColor: "gray.700"}}
         _active={{backgroundColor: "gray.700"}}

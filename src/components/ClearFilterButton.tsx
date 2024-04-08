@@ -10,7 +10,7 @@ function PlatformSelector() {
       padding="20px 25px"
       backgroundColor={"gray.100"}
       color={"gray.900"}
-      borderRadius={"15px"}
+      borderRadius={"10px"}
       fontSize={"14px"}
     >
       Clear filters

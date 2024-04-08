@@ -109,7 +109,7 @@ function NavBar() {
             gap={5}
           >
             <Box
-              display={{ base: "none", md: "block", lg: "none" }}
+              display={{ base: "none", md: "block" }}
               cursor={"pointer"}
             >
               <IoMenuSharp
