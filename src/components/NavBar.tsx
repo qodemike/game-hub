@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { IoMenuSharp } from "react-icons/io5";
 import styles from "./NavBar.module.css";
 import SearchBar from "./SearchBar";
@@ -10,13 +10,14 @@ import useGameQueryStore from "../store";
 import { userAuth } from "../context/AuthContext";
 import ColorModeSwitch from "./ColorModeSwitch";
 import GoogleIcon from "../assets/google.svg";
+import { IoIosLogOut } from "react-icons/io";
 
 function NavBar() {
   const clearGameQuery = useGameQueryStore((store) => store.clearGameQuery);
   const { scrollToTop } = useGameQueryStore();
   const showSearchBar = useGameQueryStore((s) => s.showSearchBar);
   const { setShowSearchBar } = useGameQueryStore();
-  const { googleSignIn, userCredentials } = userAuth();
+  const { googleSignIn, user , logOut} = userAuth();
   const toastDivRef = useRef<HTMLDivElement>({} as HTMLDivElement);
   const [toastSize, setToastSize] = useState<"scale(0)" | "scale(1)">(
     "scale(0)"
@@ -46,21 +47,22 @@ function NavBar() {
     e.stopPropagation();
   };
 
-  const handleCloseToast = (e: MouseEvent) => {
-    if ( !toastDivRef.current.contains(e.target as Node) ) {
-      setToastSize("scale(0)")
+  const handleCloseToast = (e: any) => {
+    if (!toastDivRef.current.contains(e.target as Node)) {
+      setToastSize("scale(0)");
     }
   };
 
   useEffect(() => {
-    
-    if(toastSize === 'scale(1)')
+    if (toastSize === "scale(1)") {
       window.addEventListener("click", handleCloseToast);
+      window.addEventListener("scroll", handleCloseToast);
+    }
 
     return () => {
       window.removeEventListener("click", handleCloseToast);
+      window.removeEventListener("scroll", handleCloseToast);
     };
-
   }, [handleOnOpenToast]);
 
   return (
@@ -83,14 +85,14 @@ function NavBar() {
             area={{ base: "left" }}
             display={{ base: "flex", md: "none" }}
             alignItems={"center"}
-            gap={3}
+            gap={5}
           >
             <IoMenuSharp size={40} />
             <SearchIcon onClick={handleShowSearchBar} boxSize={6} />
           </GridItem>
           <GridItem
             area={{ base: "middle", md: "left" }}
-            justifySelf={{ base: "", md: "start" }}
+            justifySelf={{ base: "start", md: "start" }}
             display={"flex"}
             alignItems={"center"}
             gap={5}
@@ -123,9 +125,18 @@ function NavBar() {
             area={"right"}
             position={"relative"}
           >
-            <Box cursor={"pointer"} onClick={handleOnOpenToast} >
-              {userCredentials.user ? (
-                <img src={userCredentials.user.photoURL as string} />
+            <Box
+              cursor={"pointer"}
+              onClick={handleOnOpenToast}
+              borderRadius={"full"}
+              overflow={"hidden"}
+            >
+              {user ? (
+                <Image
+                  src={user.photoURL as string}
+                  width={"40px"}
+                  height={"40px"}
+                />
               ) : (
                 <LuUserCircle strokeWidth={1} size={40} />
               )}
@@ -146,19 +157,32 @@ function NavBar() {
               transform={toastSize}
               transformOrigin={"90% 0%"}
             >
+              {user ? (
+                <Box paddingLeft={'20px'} paddingY={'10px'} display={'flex'} alignItems={'center'} gap={6}>
+                  <Image src={user.photoURL as string} width={'40px'} height={'40px'} borderRadius={'full'}/>
+                  <Text color={'black'} fontSize={'sm'} >{user.displayName}</Text>
+                </Box>
+              ) : (
+                <Box
+                  onClick={handleGoogleSignIn}
+                  padding={"20px"}
+                  _hover={{ background: "gray.300" }}
+                  display={"flex"}
+                  gap={5}
+                  cursor={"pointer"}
+                >
+                  <img src={GoogleIcon} width={"23px"} />
+                  <Text fontSize={"14px"} color={"black"} whiteSpace={"nowrap"}>
+                    Sign In with Google
+                  </Text>
+                </Box>
+              )}
               <Box
-                onClick={handleGoogleSignIn}
-                padding={"20px"}
-                _hover={{ background: "gray.300" }}
-                display={"flex"}
-                gap={5}
-                cursor={"pointer"}
-              >
-                <img src={GoogleIcon} width={"23px"} />
-                <Text fontSize={"14px"} color={"black"} whiteSpace={"nowrap"}>
-                  Sign In with Google
-                </Text>
-              </Box>
+                marginX={"20px"}
+                marginBottom={"10px"}
+                borderBottom={"1px solid"}
+                color={"gray.300"}
+              ></Box>
               <Box
                 paddingX={"20px"}
                 paddingY={"10px"}
@@ -167,6 +191,21 @@ function NavBar() {
               >
                 <ColorModeSwitch />
               </Box>
+              {user && (
+                <Box
+                  onClick={logOut}
+                  paddingX={"20px"}
+                  paddingY={"10px"}
+                  _hover={{ background: "gray.300" }}
+                  cursor={"pointer"}
+                  display={"flex"}
+                  color={"red"}
+                  gap={4}
+                >
+                  <IoIosLogOut size={25} />
+                  <Text fontSize={"sm"}>Log Out</Text>
+                </Box>
+              )}
             </Box>
           </GridItem>
         </Grid>

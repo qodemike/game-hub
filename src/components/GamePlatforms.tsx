@@ -17,6 +17,7 @@ const GamePlatforms = ({ data }: Props) => {
             whiteSpace={"nowrap"}
             marginRight={"20px"}
             display={"inline"}
+            flex={'1  100px'}
           >
             <Icon
               boxSize={1.5}

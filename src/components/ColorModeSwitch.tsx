@@ -1,4 +1,4 @@
-import { HStack, useColorMode, Icon, Text, Box } from "@chakra-ui/react";
+import {  useColorMode, Icon, Text, Box } from "@chakra-ui/react";
 import { SunIcon } from "@chakra-ui/icons";
 import { HiMoon } from "react-icons/hi";
 

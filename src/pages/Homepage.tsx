@@ -17,18 +17,18 @@ const Homepage = () => {
           right={0}
           zIndex={4}
         >
-          <Box flexShrink={0}>
+          <Box >
             <ClearFilterButton />
           </Box>
-          <Box flexShrink={0}>
+          <Box >
             <PlatformSelector />
           </Box>
-          <Box flexShrink={0}>
+          <Box >
             <SortSelector />
           </Box>
         </HStack>
 
-          <Box paddingTop={{base:"50px", md: "90px"}}  marginBottom={"20px"}>
+          <Box paddingTop={ "90px"}  marginBottom={"20px"}>
             <GamesHeading></GamesHeading>
           </Box>
 

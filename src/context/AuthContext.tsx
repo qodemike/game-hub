@@ -1,11 +1,9 @@
-import { UserCredential } from "firebase/auth";
+import { User } from "firebase/auth";
 import React, { ReactNode, createContext, useContext } from "react";
-
-
 
 interface ContextType{
     googleSignIn : () => void;
-    userCredentials : UserCredential;
+    user : User | null;
     logOut : () => void
 }
 

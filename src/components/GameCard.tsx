@@ -4,7 +4,6 @@ import {
   Heading,
   Image,
   VStack,
-  Text,
 } from "@chakra-ui/react";
 import Games  from "../entities/Games";
 import PlatformIconList from "./PlatformIconList";

@@ -21,7 +21,7 @@ const GameAttributes = ({ data }: Props) => {
     <>
       <Box color={'white'}>
         <Heading fontFamily={'Inter'} fontSize={{ base: "26px", md: "40px" }}>{data.name}</Heading>
-        <Box margin={"10px 0  20px 0px"} display={"flex"}  alignItems={"center"} gap={10}>
+        <Box margin={"10px 0  20px 0px"} display={"flex"} flexWrap={'wrap'} alignItems={"center"} gap={10}>
           <Text fontFamily={'Inter'} display={"flex"}  alignItems={"center"} gap={2}>
             <Icon
               boxSize={1.5}
@@ -30,7 +30,7 @@ const GameAttributes = ({ data }: Props) => {
             />
             {year}
           </Text>
-          <Box display={"flex"} flexWrap={'wrap'} alignItems={"center"} gap={0}>
+          <Box display={"flex"}  alignItems={"center"} gap={0}>
           <Icon
               boxSize={1.5}
               fill={"white"}

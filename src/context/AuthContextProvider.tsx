@@ -5,7 +5,7 @@ import {
   signInWithRedirect,
   signOut,
   onAuthStateChanged,
-  UserCredential,
+  User,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { AuthContext } from "./AuthContext";
@@ -15,19 +15,25 @@ interface Props {
 }
 
 export const AuthContextProvider = ({ children }: Props) => {
-const [userCredentials, setUser] = useState<UserCredential>({} as UserCredential)
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then((result) => setUser(result) );
+    signInWithPopup(auth, provider).then((result) => setUser(result.user));
   };
 
-  const logOut = () => signOut(auth)
+  const logOut = () => signOut(auth);
 
   return (
-    <AuthContext.Provider value={{ googleSignIn, userCredentials, logOut }}>
+    <AuthContext.Provider value={{ googleSignIn, user, logOut }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
