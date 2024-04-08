@@ -1,8 +1,7 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
   onAuthStateChanged,
   User,

@@ -1,4 +1,4 @@
-import { Box, Image, Skeleton, SkeletonText, Spinner } from "@chakra-ui/react";
+import { Box, Image, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import useGameDetail from "../hooks/useGameDetail";
 import GameAttributes from "../components/GameAttributes";

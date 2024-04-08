@@ -1,4 +1,4 @@
-import { Text, Box, Icon, List, ListItem, Heading } from "@chakra-ui/react";
+import { Text, Icon, List, ListItem, Heading } from "@chakra-ui/react";
 import { FaCircle } from "react-icons/fa";
 import Games from "../entities/Games";
 

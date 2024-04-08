@@ -4,7 +4,6 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import { useGames } from "../hooks/useGames";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import useGameQueryStore from "../store";
 
 function GameGrid() {
     const { data, error, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } = useGames();

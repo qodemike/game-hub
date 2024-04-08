@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Box, Grid, GridItem, Icon, Image, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { IoMenuSharp } from "react-icons/io5";
 import styles from "./NavBar.module.css";
 import SearchBar from "./SearchBar";
