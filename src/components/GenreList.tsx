@@ -55,7 +55,6 @@ const navigate = useNavigate();
               paddingY={"6px"}
               marginX={"10px"}
               paddingLeft={"15px"}
-              borderRadius={"4px"}
               _hover={{
                 background: gameQuery.genre?.id !== genre.id ? "gray.900" : "", color: 'white'
               }}

@@ -76,7 +76,7 @@ function NavBar() {
         className={styles.navBar}
         width={"100vw"}
         height={"80px"}
-        zIndex={5}
+        zIndex={50}
         position={"fixed"}
       >
         <Grid

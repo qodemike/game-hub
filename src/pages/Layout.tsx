@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
@@ -31,17 +31,17 @@ const Layout = () => {
           area="aside"
           zIndex={20}
           position={"fixed"}
-          bottom={0}
           left={0}
-          width={"280px"}
-          height={"90vh"}
-          transform={`${showSideBar ? "translateX(0)" : "translateX(-100%)"}`}
+          bottom={0}
+          width={{base: "280px", lg: "240px"}}
+          height={{base: "100vh"}}
+          transform={{base: `${showSideBar ? "translateX(0)" : "translateX(-100%)"}`, lg:"translateX(0)"}}
           transition={"transform 0.5s ease"}
         >
           <Sidebar />
         </GridItem>
 
-        <GridItem area="main" position={"absolute"}>
+        <GridItem area="main">
           <Box paddingLeft={{ base: "0px", lg: "50px" }}>
             <Outlet />
           </Box>

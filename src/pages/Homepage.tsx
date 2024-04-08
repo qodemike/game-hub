@@ -27,8 +27,7 @@ const Homepage = () => {
             <SortSelector />
           </Box>
         </HStack>
-
-        <Box paddingTop={"90px"} marginBottom={"20px"}>
+        <Box paddingTop={"30px"} marginBottom={"20px"}>
           <GamesHeading></GamesHeading>
         </Box>
 

@@ -26,12 +26,13 @@ const Sidebar = () => {
       ref={DivRef}
       width={"100%"}
       height={"100%"}
+      background={"var(--color-primary)"}
+      paddingTop={"100px"}
       display={"flex"}
       flexDirection={"column"}
       justifyContent={"space-between"}
       transition={"all 0.5s ease"}
-      background={"var(--color-primary)"}
-      paddingTop={{base:"30px", lg: "0px"}}
+      paddingLeft={{base:"0px", lg: "10px"} }
     >
       <Box>
         <Box
@@ -47,7 +48,7 @@ const Sidebar = () => {
               paddingY={"10px"}
               fontWeight={"light"}
               background={clickedOption === "Home" ? "var(--color-accent)" : ""}
-              borderRadius={{base: "0px", lg: "10px"}}
+              borderRadius={{base: "0px", lg: "7px"}}
               transition={"all"}
               transitionDuration={"100ms"}
               _hover={
@@ -66,7 +67,7 @@ const Sidebar = () => {
               paddingX={"25px"}
               fontWeight={"light"}
               background={ clickedOption === "Browse" ? "var(--color-accent)" : ""}
-              borderRadius={"10px"}
+              borderRadius={"5px"}
               transition={"all"}
               transitionDuration={"100ms"}
               _hover={
@@ -87,7 +88,7 @@ const Sidebar = () => {
               background={
                 clickedOption === "Trending" ? "var(--color-accent)" : ""
               }
-              borderRadius={"10px"}
+              borderRadius={"5px"}
               transition={"all"}
               transitionDuration={"100ms"}
               transitionTimingFunction={"ease"}
