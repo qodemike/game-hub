@@ -17,11 +17,12 @@ function NavBar() {
   const { scrollToTop } = useGameQueryStore();
   const showSearchBar = useGameQueryStore((s) => s.showSearchBar);
   const { setShowSearchBar } = useGameQueryStore();
-  const { googleSignIn, user , logOut} = userAuth();
+  const showSideBar = useGameQueryStore((s) => s.showSideBar);
+  const setShowSideBar  = useGameQueryStore((s) => s.setShowSideBar);
+
+  const { googleSignIn, user, logOut } = userAuth();
   const toastDivRef = useRef<HTMLDivElement>({} as HTMLDivElement);
-  const [toastSize, setToastSize] = useState<"scale(0)" | "scale(1)">(
-    "scale(0)"
-  );
+  const [toastSize, setToastSize] = useState<"scale(0)" | "scale(1)">( "scale(0)");
 
   const handleOnGoToHome = () => {
     clearGameQuery();
@@ -29,8 +30,12 @@ function NavBar() {
   };
 
   const handleShowSearchBar = () => {
-    setShowSearchBar(true);
+    setShowSearchBar(!showSideBar);
   };
+
+  const handleShowSideBar = () => {
+    setShowSideBar(!showSideBar)
+  }
 
   const handleGoogleSignIn = async () => {
     try {
@@ -87,7 +92,11 @@ function NavBar() {
             alignItems={"center"}
             gap={5}
           >
-            <IoMenuSharp size={40} />
+            <IoMenuSharp
+              onClick={handleShowSideBar}
+              size={40}
+              cursor={"pointer"}
+            />
             <SearchIcon onClick={handleShowSearchBar} boxSize={6} />
           </GridItem>
           <GridItem
@@ -97,8 +106,13 @@ function NavBar() {
             alignItems={"center"}
             gap={5}
           >
-            <Box display={{ base: "none", md: "block" }} cursor={"pointer"}>
-              <IoMenuSharp strokeWidth={1} size={30} />
+            <Box display={{ base: "none", md: "block", lg: "none" }} cursor={"pointer"}>
+              <IoMenuSharp
+                onClick={handleShowSideBar}
+                strokeWidth={1}
+                size={30}
+                cursor={"pointer"}
+              />
             </Box>
 
             <Link to="/" onClick={handleOnGoToHome}>
@@ -158,9 +172,22 @@ function NavBar() {
               transformOrigin={"90% 0%"}
             >
               {user ? (
-                <Box paddingLeft={'20px'} paddingY={'10px'} display={'flex'} alignItems={'center'} gap={6}>
-                  <Image src={user.photoURL as string} width={'40px'} height={'40px'} borderRadius={'full'}/>
-                  <Text color={'black'} fontSize={'sm'} >{user.displayName}</Text>
+                <Box
+                  paddingLeft={"20px"}
+                  paddingY={"10px"}
+                  display={"flex"}
+                  alignItems={"center"}
+                  gap={6}
+                >
+                  <Image
+                    src={user.photoURL as string}
+                    width={"40px"}
+                    height={"40px"}
+                    borderRadius={"full"}
+                  />
+                  <Text color={"black"} fontSize={"sm"}>
+                    {user.displayName}
+                  </Text>
                 </Box>
               ) : (
                 <Box

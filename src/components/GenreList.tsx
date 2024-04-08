@@ -29,7 +29,7 @@ const navigate = useNavigate();
       <Box borderBottom={"1px"} borderColor={"var(--color-line)"}>
         <List
           overflow={"scroll"}
-          maxHeight={"250px"}
+          maxHeight={{base: "350px", md: "500px", lg: "250px"}}
           display={"flex"}
           flexDirection={"column"}
           gap={4}

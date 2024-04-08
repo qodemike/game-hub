@@ -1,23 +1,37 @@
 import { Box, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import GenreList from "./GenreList";
-import { useState } from "react";
-import { MdLogout } from "react-icons/md";
+import { useEffect, useRef, useState } from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { userAuth } from "../context/AuthContext";
+import useGameQueryStore from "../store";
 
 const Sidebar = () => {
-  const [clickedOption, setClickedOption] = useState<
-    "Home" | "Browse" | "Trending"
-  >("Home");
+  const [clickedOption, setClickedOption] = useState< "Home" | "Browse" | "Trending">("Home");
   const { logOut } = userAuth();
+  const {showSideBar} = useGameQueryStore();
+  const DivRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (showSideBar){
+      // DivRef.current!.style.transform= "translateX(-110%)"
+      return;
+    }
+    // DivRef.current!.style.transform = "translateX(0)"
+
+  }, [showSideBar]);
 
   return (
     <Box
-      height={"85vh"}
+      ref={DivRef}
+      width={"100%"}
+      height={"100%"}
       display={"flex"}
       flexDirection={"column"}
       justifyContent={"space-between"}
+      transition={"all 0.5s ease"}
+      background={"var(--color-primary)"}
+      paddingTop={{base:"30px", lg: "0px"}}
     >
       <Box>
         <Box
@@ -33,7 +47,7 @@ const Sidebar = () => {
               paddingY={"10px"}
               fontWeight={"light"}
               background={clickedOption === "Home" ? "var(--color-accent)" : ""}
-              borderRadius={"10px"}
+              borderRadius={{base: "0px", lg: "10px"}}
               transition={"all"}
               transitionDuration={"100ms"}
               _hover={
@@ -51,9 +65,7 @@ const Sidebar = () => {
               paddingY={"10px"}
               paddingX={"25px"}
               fontWeight={"light"}
-              background={
-                clickedOption === "Browse" ? "var(--color-accent)" : ""
-              }
+              background={ clickedOption === "Browse" ? "var(--color-accent)" : ""}
               borderRadius={"10px"}
               transition={"all"}
               transitionDuration={"100ms"}

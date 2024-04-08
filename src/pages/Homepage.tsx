@@ -8,33 +8,33 @@ import GameGrid from "../components/GameGrid";
 const Homepage = () => {
   return (
     <>
-      <Box   maxWidth={"90vw"} margin={{base:"0 auto", lg:"0 20px 0 0" }} >
+      <Box maxWidth={"90vw"} margin={{ base: "0 auto", lg: "0 20px 0 0" }}>
         <HStack
           display={{ base: "flex", md: "flex" }}
           position={"fixed"}
           top={"83px"}
-          marginRight={{lg:'20px'}}
+          marginRight={{ lg: "20px" }}
           right={0}
           zIndex={4}
         >
-          <Box >
+          <Box>
             <ClearFilterButton />
           </Box>
-          <Box >
+          <Box>
             <PlatformSelector />
           </Box>
-          <Box >
+          <Box>
             <SortSelector />
           </Box>
         </HStack>
 
-          <Box paddingTop={ "90px"}  marginBottom={"20px"}>
-            <GamesHeading></GamesHeading>
-          </Box>
+        <Box paddingTop={"90px"} marginBottom={"20px"}>
+          <GamesHeading></GamesHeading>
+        </Box>
 
-          <Box>
-            <GameGrid />
-          </Box>
+        <Box>
+          <GameGrid />
+        </Box>
       </Box>
     </>
   );
