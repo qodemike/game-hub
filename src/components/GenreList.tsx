@@ -26,7 +26,7 @@ const navigate = useNavigate();
       >
         Genres
       </Text>
-      <Box borderBottom={"1px"} borderColor={"var(--color-line)"}>
+      <Box paddingRight={{base:"30px", lg:"0"}} borderBottom={"1px"} borderColor={"var(--color-line)"}>
         <List
           overflow={"scroll"}
           maxHeight={{base: "350px", md: "500px", lg: "250px"}}
