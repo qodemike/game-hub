@@ -44,7 +44,7 @@ const Homepage = () => {
           </HStack>
         </Draggable>
 
-        <Box paddingTop={"30px"} marginBottom={"20px"}>
+        <Box paddingTop={{base: "50px", md:"30px"}} marginBottom={"20px"}>
           <GamesHeading></GamesHeading>
         </Box>
 
