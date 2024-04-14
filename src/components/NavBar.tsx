@@ -95,8 +95,9 @@ function NavBar() {
             gap={5}
           >
             <IoMenuSharp
+              strokeWidth={1}
               onClick={handleShowSideBar}
-              size={40}
+              size={35}
               cursor={"pointer"}
             />
             <SearchIcon onClick={handleShowSearchBar} boxSize={6} />
