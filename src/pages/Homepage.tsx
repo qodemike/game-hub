@@ -12,8 +12,7 @@ const Homepage = () => {
 
   useEffect(() => {
     if (window.innerWidth < 700) setDragDisabled(false)
-      else setDragDisabled(true)
-    console.log('somethings changing')
+    else setDragDisabled(true)
   }, [window.innerWidth]);
 
   return (
