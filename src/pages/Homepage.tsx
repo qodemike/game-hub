@@ -9,10 +9,23 @@ import { useEffect, useState } from "react";
 
 const Homepage = () => {
   const [dragDisabled, setDragDisabled] = useState(true);
+  const [isOnPhone, setIsOnPhone] = useState(true);
+
+  const onResize = () => {
+    if (window.innerWidth < 500) {
+      setIsOnPhone(true);
+    } else {
+      setIsOnPhone(false);
+    }
+  };
 
   useEffect(() => {
-    if (window.innerWidth < 700) setDragDisabled(false)
-    else setDragDisabled(true)
+    if (window.innerWidth < 500){
+      setDragDisabled(false);
+    } else {
+      setDragDisabled(true)
+    }
+    window.addEventListener("resize", onResize);
   }, [window.innerWidth]);
 
   return (
@@ -22,6 +35,7 @@ const Homepage = () => {
           axis="x"
           bounds={{ right: 0, left: -150 }}
           disabled={dragDisabled}
+          position={isOnPhone ? undefined : { x: 0, y: 0 }}
         >
           <HStack
             display={{ base: "flex", md: "flex" }}
@@ -43,7 +57,7 @@ const Homepage = () => {
           </HStack>
         </Draggable>
 
-        <Box paddingTop={{base: "50px", md:"30px"}} marginBottom={"20px"}>
+        <Box paddingTop={{ base: "50px", md: "30px" }} marginBottom={"20px"}>
           <GamesHeading></GamesHeading>
         </Box>
 
